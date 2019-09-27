@@ -119,6 +119,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference  pontoRef = mDatabase.child("Ponto");
 
+
         pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
