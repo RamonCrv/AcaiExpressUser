@@ -132,6 +132,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     //Your current object holds all the variables in your picture.
                     Map<String, Object> atributosDoPonto = (Map<String, Object>) ponto2.get(childKey);
 
+
                     String la = (String) atributosDoPonto.get("latiT");
                     String lo = (String) atributosDoPonto.get("longT");
                     float latitude = Float.parseFloat(la);
@@ -139,6 +140,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     String nomeDoPonto = (String) atributosDoPonto.get("nome");
                     LatLng posNoMap = new LatLng(latitude, longitude);
                     final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(nomeDoPonto).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_music_background2)));
+
 
 
                 }
