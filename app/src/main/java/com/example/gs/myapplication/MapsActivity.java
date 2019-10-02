@@ -7,10 +7,12 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.gs.myapplication.ui.gallery.GalleryFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -27,10 +29,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMarkerClickListener {
+public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
 
     MapView mapView;
     private GoogleMap mMap;
+    public String postoKey;
+    public static Bundle InfoSalvas = new Bundle();
+
     ArrayList Ponto = new ArrayList();
 
     @Override
@@ -42,21 +47,23 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         getMapAsync(this);
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
         criarPontos();
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                Intent i = new Intent(getActivity(),InfoPonto.class);
+                startActivity(i);
+
+                return true;
+            }
+        });
+
         LatLng latLng = new LatLng(0.025921, -51.068596);
 
         // Add a marker in Sydney and move the camera
@@ -101,18 +108,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
     }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        if (marker.getTitle().equals("aqui")){
-
-            Intent i = new Intent(getActivity(), lista.class);
-            startActivity(i);
-        }
-
-
-
-        return true;
-    }
 
     public void criarPontos(){
         DatabaseReference mDatabase;
@@ -132,7 +127,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     //Your current object holds all the variables in your picture.
                     Map<String, Object> atributosDoPonto = (Map<String, Object>) ponto2.get(childKey);
 
-
+                    String key = (String) atributosDoPonto.get("id");
+                    MapsActivity.InfoSalvas.putString("key", key);
                     String la = (String) atributosDoPonto.get("latiT");
                     String lo = (String) atributosDoPonto.get("longT");
                     float latitude = Float.parseFloat(la);
@@ -151,6 +147,9 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
             }
         });
+
+
+
 
     }
 
