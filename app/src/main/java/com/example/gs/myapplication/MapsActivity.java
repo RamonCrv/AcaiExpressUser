@@ -51,8 +51,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        criarPontos();
-
+        criarPontos(googleMap);
+/*
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -64,12 +64,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             }
         });
 
+ */
+
         LatLng latLng = new LatLng(0.025921, -51.068596);
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.8f));
         //mMap.animateCamera(CameraUpdateFactory.zoomIn());
         // mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
@@ -109,7 +107,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
 
 
-    public void criarPontos(){
+    public void criarPontos(GoogleMap googleMap){
+        mMap = googleMap;
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference  pontoRef = mDatabase.child("Ponto");
@@ -127,24 +126,41 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     //Your current object holds all the variables in your picture.
                     Map<String, Object> atributosDoPonto = (Map<String, Object>) ponto2.get(childKey);
 
-                    String key = (String) atributosDoPonto.get("id");
-                    MapsActivity.InfoSalvas.putString("key", key);
+                    //String key = (String) atributosDoPonto.get("id");
+                    //MapsActivity.InfoSalvas.putString("key", key);
                     String la = (String) atributosDoPonto.get("latiT");
                     String lo = (String) atributosDoPonto.get("longT");
                     float latitude = Float.parseFloat(la);
                     float longitude = Float.parseFloat(lo);
-                    String nomeDoPonto = (String) atributosDoPonto.get("nome");
+                    String title = (String) atributosDoPonto.get("id");
                     LatLng posNoMap = new LatLng(latitude, longitude);
-                    final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(nomeDoPonto).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_music_background2)));
+                    final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_music_background2)));
 
 
 
                 }
             }
 
+
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+
+                String key = marker.getTitle();
+                MapsActivity.InfoSalvas.putString("key", key);
+                String str = MapsActivity.InfoSalvas.getString("key");
+                Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(),InfoPonto.class);
+                startActivity(i);
+                return true;
             }
         });
 

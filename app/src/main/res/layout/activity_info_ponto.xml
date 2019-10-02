@@ -7,7 +7,7 @@
     tools:context=".InfoPonto">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/PontNomeXML"
         android:layout_width="415dp"
         android:layout_height="52dp"
         android:text="TextView"
@@ -17,31 +17,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ImgPt"
         android:layout_width="414dp"
         android:layout_height="265dp"
         android:layout_marginTop="52dp"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/PontNomeXML"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/PontNomeXML"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/StatusXML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        android:textColor="#9C27B0"
+        app:layout_constraintBottom_toBottomOf="@+id/ImgPt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/ImgPt"
         app:layout_constraintVertical_bias="0.886" />
 
     <TextView
-        android:id="@+id/preco"
+        android:id="@+id/precoXML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
@@ -65,9 +67,9 @@
         android:hint="Comente aqui..."
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/ButtVoltarXML"
         app:layout_constraintHorizontal_bias="0.579"
-        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/ButtVoltarXML"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.829" />
 
@@ -83,7 +85,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ButtVoltarXML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -99,10 +101,22 @@
         android:layout_height="59dp"
         android:text="Falar com Vendedor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/preco"
+        app:layout_constraintEnd_toEndOf="@+id/precoXML"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/preco"
+        app:layout_constraintStart_toStartOf="@+id/precoXML"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.54" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        app:layout_constraintBottom_toBottomOf="@+id/coment"
+        app:layout_constraintEnd_toEndOf="@+id/coment"
+        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintStart_toStartOf="@+id/coment"
+        app:layout_constraintTop_toTopOf="@+id/coment"
+        app:layout_constraintVertical_bias="0.945" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
