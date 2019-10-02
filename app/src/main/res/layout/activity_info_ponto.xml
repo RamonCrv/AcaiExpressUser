@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/cardview_dark_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoPonto">
@@ -21,12 +22,12 @@
 
     <ImageView
         android:id="@+id/ImgPt"
-        android:layout_width="414dp"
-        android:layout_height="265dp"
+        android:layout_width="0dp"
+        android:layout_height="264dp"
         android:layout_marginTop="52dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="@+id/PontNomeXML"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/PontNomeXML"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -36,10 +37,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
+        android:backgroundTint="#FFFFFF"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="#9C27B0"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ImgPt"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +59,9 @@
         android:layout_marginBottom="21dp"
         android:drawableLeft="@drawable/preco"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
@@ -67,8 +71,8 @@
 
     <EditText
         android:id="@+id/coment"
-        android:layout_width="406dp"
-        android:layout_height="67dp"
+        android:layout_width="399dp"
+        android:layout_height="66dp"
         android:layout_marginStart="50dp"
         android:ems="10"
         android:gravity="start"
@@ -110,10 +114,10 @@
         android:text="Falar com Vendedor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/precoXML"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="@+id/precoXML"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.554" />
+        app:layout_constraintVertical_bias="0.561" />
 
     <Button
         android:id="@+id/btn_add"
@@ -123,9 +127,9 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/coment"
         app:layout_constraintEnd_toEndOf="@+id/coment"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.969"
         app:layout_constraintStart_toStartOf="@+id/coment"
         app:layout_constraintTop_toTopOf="@+id/coment"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintVertical_bias="0.482" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
