@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/logoround"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".InfoPonto" />
         <activity android:name=".lista" />
         <!--
