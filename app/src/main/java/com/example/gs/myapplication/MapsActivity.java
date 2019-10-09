@@ -1,12 +1,17 @@
 package com.example.gs.myapplication;
 import androidx.annotation.NonNull;
+
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,6 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,19 +34,28 @@ import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
+public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener , GoogleMap.OnInfoWindowClickListener {
     public MapView mapView;
     private GoogleMap mMap;
     public String postoKey;
+    private View locationButton;
+
     public static Bundle InfoSalvas = new Bundle();
     ArrayList Ponto = new ArrayList();
+
+
     @Override
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+
+        //mMap.setOnInfoWindowClickListener(this);
+
 
         try {
 
@@ -70,6 +85,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
             layoutParams.setMargins(0, 0, 30, 30);
         }
+
 /*
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -92,7 +108,14 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         mMap.setMyLocationEnabled(true);
+
     }
+
+
+
+
+
+
     @Override
     public boolean onMyLocationButtonClick() {
 
@@ -123,7 +146,15 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     String title = (String) atributosDoPonto.get("id");
                     LatLng posNoMap = new LatLng(latitude, longitude);
                     if(st.equals("Aberto")){
+
+                        Ponto info = new Ponto();
+
+                        info.setNome("Hotel : excellent hotels available");
+                        info.setPreso("Food : all types of restaurants available");
+
+
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto_background)));
+                        ptMarker.showInfoWindow();
                     }else{
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_fechado_background)));
                     }
@@ -142,16 +173,18 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                 MapsActivity.InfoSalvas.putString("key", key);
                 String str = MapsActivity.InfoSalvas.getString("key");
                 Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(),InfoPonto.class);
-                startActivity(i);
+
+              //  Intent i = new Intent(getActivity(),Ponto.class);
+               // startActivity(i);
                 return true;
             }
         });
     }
 
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(getActivity(), "Info window clicked", Toast.LENGTH_SHORT).show();
 
-
-
-
-
+    }
 }
+
