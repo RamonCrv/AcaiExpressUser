@@ -12,6 +12,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -30,6 +31,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     ArrayList Ponto = new ArrayList();
     @Override
    public void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         getMapAsync(this);
     }
@@ -37,6 +42,13 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         criarPontos(googleMap);
+
+
+
+
+
+
+
         if (mapView != null  &&
                 mapView.findViewById(Integer.parseInt("1")) != null) {
             // Get the button view
@@ -104,7 +116,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     float longitude = Float.parseFloat(lo);
                     String title = (String) atributosDoPonto.get("id");
                     LatLng posNoMap = new LatLng(latitude, longitude);
-                    final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.logobackground)));
+                    final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.macker_fechado)));
                 }
             }
 
