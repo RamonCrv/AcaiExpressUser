@@ -1,8 +1,10 @@
 package com.example.gs.myapplication;
 import androidx.annotation.NonNull;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -12,8 +14,8 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
     public MapView mapView;
     private GoogleMap mMap;
@@ -31,24 +36,28 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     ArrayList Ponto = new ArrayList();
     @Override
    public void onCreate(Bundle savedInstanceState) {
-
-
-
-
         super.onCreate(savedInstanceState);
         getMapAsync(this);
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        try {
+
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+
+            if (!success) {
+                Log.e(TAG, "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e(TAG, "Can't find style. Error: ", e);
+        }
+
+
+
         mMap = googleMap;
         criarPontos(googleMap);
-
-
-
-
-
-
-
         if (mapView != null  &&
                 mapView.findViewById(Integer.parseInt("1")) != null) {
             // Get the button view
@@ -105,21 +114,21 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                 //These are all of your children.
                 Map<String, Object> ponto2 = (Map<String, Object>) dataSnapshot.getValue();
                 for (String childKey: ponto2.keySet()) {
-                    //childKey is your "-LQka.. and so on"
-                    //Your current object holds all the variables in your picture.
                     Map<String, Object> atributosDoPonto = (Map<String, Object>) ponto2.get(childKey);
-                    //String key = (String) atributosDoPonto.get("id");
-                    //MapsActivity.InfoSalvas.putString("key", key);
                     String la = (String) atributosDoPonto.get("latiT");
                     String lo = (String) atributosDoPonto.get("longT");
+                    String st = (String) atributosDoPonto.get("aberto");
                     float latitude = Float.parseFloat(la);
                     float longitude = Float.parseFloat(lo);
                     String title = (String) atributosDoPonto.get("id");
                     LatLng posNoMap = new LatLng(latitude, longitude);
-                    final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.macker_fechado)));
+                    if(st.equals("Aberto")){
+                        final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto_background)));
+                    }else{
+                        final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_fechado_background)));
+                    }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
