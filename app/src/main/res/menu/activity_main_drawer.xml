@@ -16,6 +16,10 @@
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_tools" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/title_activity_login" />
     </group>
 
     <item android:title="Mais +++">
@@ -29,3 +33,5 @@
     </item>
 
 </menu>
+
+

@@ -1,5 +1,6 @@
 package com.example.gs.myapplication;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,28 +36,26 @@ import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener , GoogleMap.OnInfoWindowClickListener {
+public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener  {
     public MapView mapView;
     private GoogleMap mMap;
     public String postoKey;
     private View locationButton;
-
+    private Button mOpenDialog;
+    public TextView mInputDisplay;
+    private static final String TAG = "MapsActivity";
     public static Bundle InfoSalvas = new Bundle();
     ArrayList Ponto = new ArrayList();
-
 
     @Override
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-    }
 
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-
         //mMap.setOnInfoWindowClickListener(this);
-
 
         try {
 
@@ -68,9 +68,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style. Error: ", e);
         }
-
-
-
         mMap = googleMap;
         criarPontos(googleMap);
         if (mapView != null  &&
@@ -111,11 +108,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
     }
 
-
-
-
-
-
     @Override
     public boolean onMyLocationButtonClick() {
 
@@ -147,16 +139,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     LatLng posNoMap = new LatLng(latitude, longitude);
                     if(st.equals("Aberto")){
 
-                        Ponto info = new Ponto();
-
-                        info.setNome("Hotel : excellent hotels available");
-                        info.setPreso("Food : all types of restaurants available");
-
-
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto_background)));
-                        ptMarker.showInfoWindow();
                     }else{
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_fechado_background)));
+
                     }
                 }
             }
@@ -171,20 +157,24 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             public boolean onMarkerClick(Marker marker) {
                 String key = marker.getTitle();
                 MapsActivity.InfoSalvas.putString("key", key);
-                String str = MapsActivity.InfoSalvas.getString("key");
-                Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+                //String str = MapsActivity.InfoSalvas.getString("key");
+               // Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
 
-              //  Intent i = new Intent(getActivity(),Ponto.class);
-               // startActivity(i);
+              //  MainFragment fragment = new MainFragment();
+
+               // FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.container, fragment, "MainFragment");
+              //  transaction.commit();
+
+                Intent i = new Intent(getActivity(),InfoPonto.class);
+                startActivity(i);
                 return true;
             }
         });
     }
 
-    @Override
-    public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(getActivity(), "Info window clicked", Toast.LENGTH_SHORT).show();
+
 
     }
-}
+
 

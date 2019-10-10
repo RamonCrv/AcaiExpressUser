@@ -2,6 +2,7 @@ package com.example.gs.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,17 +41,21 @@ public class InfoPonto extends AppCompatActivity {
     private TextView StatusDoPonto;
     private TextView PrecoDoPonto;
     DatabaseReference databaseDoc2;
+    public Button voltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ponto);
+        Intent b = new Intent(InfoPonto.this, Carregando.class);
+        startActivity(b);
+
         inicializarComponentes();
         BuscarImg();
         BuscarDoc();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        String str = MapsActivity.InfoSalvas.getString("key");
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+        //String str = MapsActivity.InfoSalvas.getString("key");
+       // Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
 
         btnComent.setOnClickListener((new View.OnClickListener() {
@@ -61,10 +66,12 @@ public class InfoPonto extends AppCompatActivity {
             }
         }));
 
-
-
-
-
+        voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     void inicializarComponentes(){
@@ -73,6 +80,7 @@ public class InfoPonto extends AppCompatActivity {
         nomeDoPonto  = (findViewById(R.id.PontNomeXML));
         StatusDoPonto =  (findViewById(R.id.StatusXML));
         PrecoDoPonto = (findViewById(R.id.precoXML));
+        voltar = (findViewById(R.id.ButtVoltarXML));
     }
 
     public void BuscarImg(){
