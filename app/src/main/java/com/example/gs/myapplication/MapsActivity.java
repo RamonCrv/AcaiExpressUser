@@ -139,7 +139,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     LatLng posNoMap = new LatLng(latitude, longitude);
                     if(st.equals("Aberto")){
 
-                        final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto_background)));
+                        final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto2_background)));
                     }else{
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_fechado_background)));
 

@@ -49,7 +49,6 @@ public class InfoPonto extends AppCompatActivity {
         setContentView(R.layout.activity_info_ponto);
         Intent b = new Intent(InfoPonto.this, Carregando.class);
         startActivity(b);
-
         inicializarComponentes();
         BuscarImg();
         BuscarDoc();
