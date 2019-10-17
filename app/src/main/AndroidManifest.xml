@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/logoround"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Carregando"></activity>
+        <activity android:name=".Login"></activity>
+        <activity android:name=".Cadastro" />
+        <activity android:name=".Carregando" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />

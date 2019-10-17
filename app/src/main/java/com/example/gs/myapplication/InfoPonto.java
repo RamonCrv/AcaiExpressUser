@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Map;
+
 import io.opencensus.common.ServerStatsFieldEnums;
 
 public class InfoPonto extends AppCompatActivity {
@@ -36,12 +39,19 @@ public class InfoPonto extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     private Button btnComent;
+    private ImageButton btnestar;
     private ImageView ImagemDoPonto;
     private TextView nomeDoPonto;
     private TextView StatusDoPonto;
     private TextView PrecoDoPonto;
+    public String idDoPonto;
     DatabaseReference databaseDoc2;
+    DatabaseReference databaseDoc3;
+
     public Button voltar;
+
+    private boolean taFavoritado;
+    public  boolean eFavorito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +63,12 @@ public class InfoPonto extends AppCompatActivity {
         BuscarImg();
         BuscarDoc();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+
+        verificarFavoritos();
+        eventoClicks();
+
+
         //String str = MapsActivity.InfoSalvas.getString("key");
        // Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
@@ -73,6 +89,31 @@ public class InfoPonto extends AppCompatActivity {
         });
     }
 
+    private void eventoClicks() {
+       btnestar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (auth.getCurrentUser() != null){
+                    if (eFavorito){
+                     Desfavoritar();
+                        btnestar.setBackgroundResource(R.drawable.estrelaoff);
+                        eFavorito = !eFavorito;
+                    }else{
+                        salvarNosFavoritos();
+                        Toast.makeText(InfoPonto.this, "Posto Favoritado",
+                                Toast.LENGTH_SHORT).show();
+                        eFavorito = !eFavorito;
+                        btnestar.setBackgroundResource(R.drawable.estrelaon);
+                    }
+                }else {
+                    Toast.makeText(InfoPonto.this, "É necessario estar logado para favoritar",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
     void inicializarComponentes(){
         btnComent =(findViewById(R.id.btn_add));
         ImagemDoPonto= (findViewById(R.id.ImgPt));
@@ -80,6 +121,7 @@ public class InfoPonto extends AppCompatActivity {
         StatusDoPonto =  (findViewById(R.id.StatusXML));
         PrecoDoPonto = (findViewById(R.id.precoXML));
         voltar = (findViewById(R.id.ButtVoltarXML));
+        btnestar = (findViewById(R.id.btnestar));
     }
 
     public void BuscarImg(){
@@ -107,6 +149,7 @@ public class InfoPonto extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     String str = MapsActivity.InfoSalvas.getString("key");
+                    idDoPonto = str;
                     nomeDoPonto.setText(dataSnapshot.child(str).child("nome").getValue().toString());
                     PrecoDoPonto.setText(dataSnapshot.child(str).child("preso").getValue().toString());
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
@@ -121,6 +164,56 @@ public class InfoPonto extends AppCompatActivity {
             }
         });
     }
+
+    public void salvarNosFavoritos(){
+        databaseDoc3 = FirebaseDatabase.getInstance().getReference("Usuario");
+        databaseDoc3.child(auth.getCurrentUser().getUid()).child("Favorito").child(idDoPonto).setValue(idDoPonto);
+    }
+
+    public  void Desfavoritar(){
+        databaseDoc3 = FirebaseDatabase.getInstance().getReference("Usuario");
+        databaseDoc3.child(auth.getCurrentUser().getUid()).child("Favorito").child(idDoPonto).removeValue();
+    }
+
+    public void verificarFavoritos(){
+        eFavorito = false;
+        btnestar.setBackgroundResource(R.drawable.estrelaoff);
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid());
+        //DatabaseReference  pontoRef  = pontoRef0.child("Favorito");
+        pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //These are all of your children.
+                Map<String, Object> ponto2 = (Map<String, Object>) dataSnapshot.getValue();
+                if (dataSnapshot.getValue() != null){
+                    for (String childKey: ponto2.keySet()) {
+                        Map<String, Object> codigoDoPonto = (Map<String, Object>) ponto2.get(childKey);
+                        String la = (String) codigoDoPonto.get(idDoPonto);
+                        if (la != null){
+                            if (la.equals(idDoPonto)){
+                                eFavorito = true;
+                                btnestar.setBackgroundResource(R.drawable.estrelaon);
+
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void trocarImagem(){
+
+    }
+
 
 
 

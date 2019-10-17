@@ -6,16 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import com.example.gs.myapplication.NavigationDrawerConstants;
 import com.example.gs.myapplication.R;
-import com.example.gs.myapplication.ui.login.LoginActivity;
+
 
 public class SlideshowFragment extends Fragment {
     TextView textView;

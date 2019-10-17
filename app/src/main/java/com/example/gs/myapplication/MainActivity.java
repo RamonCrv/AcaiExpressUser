@@ -2,6 +2,7 @@ package com.example.gs.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,13 +13,16 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.gs.myapplication.ui.slideshow.SlideshowFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager fragmentManager;
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -59,4 +63,14 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        if (id == R.id.nav_tools){
+            Toast.makeText(this.getBaseContext(),"VC APERTOU O BOTÃO tools",
+                    Toast.LENGTH_SHORT).show();
         }
+        return false;
+    }
+}

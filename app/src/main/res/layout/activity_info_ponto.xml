@@ -85,17 +85,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.871" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="56dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="268dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.983"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/favorito" />
-
     <Button
         android:id="@+id/ButtVoltarXML"
         android:layout_width="wrap_content"
@@ -131,5 +120,19 @@
         app:layout_constraintStart_toStartOf="@+id/coment"
         app:layout_constraintTop_toTopOf="@+id/coment"
         app:layout_constraintVertical_bias="0.482" />
+
+    <ImageButton
+        android:id="@+id/btnestar"
+        android:layout_width="45dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="212dp"
+        android:background="@drawable/estrelaoff"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
+        tools:srcCompat="@drawable/favorito"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
