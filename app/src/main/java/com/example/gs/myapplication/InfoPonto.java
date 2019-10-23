@@ -64,8 +64,10 @@ public class InfoPonto extends AppCompatActivity {
         BuscarDoc();
         firebaseDatabase = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser() != null){
+            verificarFavoritos();
+        }
 
-        verificarFavoritos();
         eventoClicks();
 
 
@@ -151,7 +153,7 @@ public class InfoPonto extends AppCompatActivity {
                     String str = MapsActivity.InfoSalvas.getString("key");
                     idDoPonto = str;
                     nomeDoPonto.setText(dataSnapshot.child(str).child("nome").getValue().toString());
-                    PrecoDoPonto.setText(dataSnapshot.child(str).child("preso").getValue().toString());
+                    PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString()+"/L");
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
 
                 }else {

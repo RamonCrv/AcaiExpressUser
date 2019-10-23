@@ -46,8 +46,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/precoXML"
@@ -142,19 +144,5 @@
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
         tools:srcCompat="@drawable/favorito"
         tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="56dp"
-        android:layout_height="46dp"
-        android:text="R$"
-        android:textColor="#FFFFFF"
-        android:textSize="36dp"
-        app:layout_constraintBottom_toBottomOf="@+id/precoXML"
-        app:layout_constraintEnd_toStartOf="@+id/precoXML"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
-        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
