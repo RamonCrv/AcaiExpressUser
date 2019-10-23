@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoPonto">
+
     <TextView
         android:id="@+id/PontNomeXML"
         android:layout_width="415dp"
         android:layout_height="52dp"
         android:text=""
         android:textAlignment="center"
+        android:textColor="#FFC107"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,13 +23,12 @@
 
     <ImageView
         android:id="@+id/ImgPt"
-        android:layout_width="424dp"
-        android:layout_height="266dp"
+        android:layout_width="366dp"
+        android:layout_height="286dp"
         android:layout_marginTop="52dp"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/PontNomeXML"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/PontNomeXML"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -44,10 +45,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ImgPt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ImgPt"
-        app:layout_constraintVertical_bias="0.886" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/precoXML"
@@ -59,6 +60,7 @@
         android:drawableLeft="@drawable/preco"
         android:text=""
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
@@ -77,12 +79,14 @@
         android:gravity="start"
         android:hint="Comente aqui..."
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ButtVoltarXML"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="@+id/ButtVoltarXML"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.871" />
+
     <Button
         android:id="@+id/ButtVoltarXML"
         android:layout_width="wrap_content"
@@ -90,6 +94,7 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/btn1"
         android:text="Voltar"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,8 +104,9 @@
         android:id="@+id/button2"
         android:layout_width="186dp"
         android:layout_height="47dp"
-        android:text="Falar com Vendedor"
         android:background="@drawable/btn1"
+        android:text="Falar com Vendedor"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/precoXML"
         app:layout_constraintHorizontal_bias="0.444"
@@ -112,9 +118,10 @@
         android:id="@+id/btn_add"
         android:layout_width="67dp"
         android:layout_height="37dp"
-        android:text="Enviar"
-        android:textSize="12sp"
         android:background="@drawable/btn1"
+        android:text="Enviar"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/coment"
         app:layout_constraintEnd_toEndOf="@+id/coment"
         app:layout_constraintHorizontal_bias="0.969"
@@ -124,13 +131,13 @@
 
     <ImageButton
         android:id="@+id/btnestar"
-        android:layout_width="45dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="212dp"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="244dp"
         android:background="@drawable/estrelaoff"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
         tools:srcCompat="@drawable/favorito"
