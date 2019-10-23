@@ -195,7 +195,6 @@ public class InfoPonto extends AppCompatActivity {
                             if (la.equals(idDoPonto)){
                                 eFavorito = true;
                                 btnestar.setBackgroundResource(R.drawable.estrelaon);
-
                             }
                         }
 
