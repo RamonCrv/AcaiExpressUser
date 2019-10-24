@@ -40,14 +40,12 @@ public class Lista extends AppCompatActivity {
                 TextView localname = (TextView) view.findViewById(R.id.localname);
                 TextView Aberto = (TextView) view.findViewById(R.id.aberto);
                 TextView naosei1 = (TextView) view.findViewById(R.id.textView4);
-                TextView naosei2 = (TextView) view.findViewById(R.id.textView);
+                TextView naosei2 = (TextView) view.findViewById(R.id.textView3);
 
                 localname.setText(arrayList.get(position).Name);
                 Aberto.setText(arrayList.get(position).Sex);
                 naosei1.setText(arrayList.get(position).Birthday);
                 naosei2.setText(arrayList.get(position).Naosei0);
-
-
                 return view;
             }
         };
