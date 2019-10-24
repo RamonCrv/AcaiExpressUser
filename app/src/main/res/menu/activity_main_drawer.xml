@@ -20,6 +20,10 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/title_activity_login" />
+        <item
+        android:id="@+id/nav_Lista_de_Favoritos"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Favoritos" />
     </group>
 
     <item android:title="Mais +++">

@@ -64,8 +64,10 @@ public class InfoPonto extends AppCompatActivity {
         BuscarDoc();
         firebaseDatabase = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser() != null){
+            verificarFavoritos();
+        }
 
-        verificarFavoritos();
         eventoClicks();
 
 
