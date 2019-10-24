@@ -1,9 +1,6 @@
 package com.example.gs.myapplication;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.location.Location;
@@ -11,10 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -25,7 +21,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,8 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener  {
     public MapView mapView;
@@ -55,7 +48,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        //mMap.setOnInfoWindowClickListener(this);
+
 
         try {
 
@@ -81,20 +74,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
             layoutParams.setMargins(0, 0, 30, 30);
+
         }
 
-/*
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
 
-                Intent i = new Intent(getActivity(),InfoPonto.class);
-                startActivity(i);
-
-                return true;
-            }
-        });
- */
         LatLng latLng = new LatLng(0.025921, -51.068596);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.8f));
         //mMap.animateCamera(CameraUpdateFactory.zoomIn());
@@ -106,7 +89,20 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         mMap.setOnMyLocationClickListener(this);
         mMap.setMyLocationEnabled(true);
 
+
+
+        Person info = new Person("gg","1232","we","ds");
+        info.setBirthday("snowqualmie");
+        info.setSex("Hotel : excellent hotels available");
+        info.setName("Food : all types of restaurants available");
+        info.setNaosei0("Reach the site by bus, car and train.");
+
+
+
     }
+
+
+
 
     @Override
     public boolean onMyLocationButtonClick() {
@@ -140,12 +136,16 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     if(st.equals("Aberto")){
 
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto2_background)));
+
+
                     }else{
                         final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_fechado_background)));
 
                     }
+
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -157,6 +157,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             public boolean onMarkerClick(Marker marker) {
                 String key = marker.getTitle();
                 MapsActivity.InfoSalvas.putString("key", key);
+
+
                 //String str = MapsActivity.InfoSalvas.getString("key");
                // Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
 
@@ -167,7 +169,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
               //  transaction.commit();
 
                 Intent i = new Intent(getActivity(),InfoPonto.class);
-                startActivity(i);
+               startActivity(i);
                 return true;
             }
         });

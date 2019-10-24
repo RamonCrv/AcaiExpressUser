@@ -5,7 +5,9 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MapsActivity">
+
 
 
     <fragment
@@ -15,15 +17,7 @@
         android:layout_height="match_parent"
         tools:context=".MapsActivity"
         tools:layout="@layout/activity_maps" />
+    <include layout="@layout/activity_info_ponto"></include><include/>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="3dp"
-        android:text="Close All Infoviews" />
 
 </RelativeLayout>
