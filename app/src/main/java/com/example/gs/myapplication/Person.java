@@ -8,11 +8,15 @@ public class Person {
      String Name;
      String Birthday;
      String Sex;
+     String Naosei0;
 
-    public Person(String name, String birthday,  String sex) {
+
+
+    public Person(String name, String birthday, String sex,String naosei0) {
         this.Birthday = birthday;
         this.Name = name;
         this.Sex = sex;
+        this.Naosei0 = naosei0;
     }
 
     public String getName() {
@@ -37,5 +41,12 @@ public class Person {
 
     public void setSex(String sex) {
         this.Sex = sex;
+    }
+    public String getNaosei0() {
+        return Naosei0;
+    }
+
+    public void setNaosei0(String naosei0) {
+        Naosei0 = naosei0;
     }
 }
