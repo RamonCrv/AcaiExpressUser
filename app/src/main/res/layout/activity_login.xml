@@ -50,7 +50,7 @@
             android:layout_height="46dp"
             android:layout_marginEnd="94dp"
             android:background="@drawable/texts"
-            android:drawableLeft="@drawable/btn1"
+            android:drawableLeft="@drawable/usar"
             android:ems="10"
             android:hint=" Senha:"
             android:inputType="textPassword"
@@ -92,12 +92,14 @@
             android:background="@drawable/btsemborda"
             android:text="Entrar sem login"
             android:textColor="#93ECE8"
-            android:textSize="13sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btLogar"
             app:layout_constraintStart_toStartOf="@+id/btLogar"
             app:layout_constraintTop_toBottomOf="@+id/btLogar"
             app:layout_constraintVertical_bias="0.0" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

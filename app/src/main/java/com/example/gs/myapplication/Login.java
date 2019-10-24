@@ -1,9 +1,12 @@
 package com.example.gs.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -34,6 +37,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         inicializarComponentes();
+        pedirPermissao();
         eventoClicks();
 
         mAuth = FirebaseAuth.getInstance();
@@ -54,18 +58,23 @@ public class Login extends AppCompatActivity {
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (pedirPermissao()){
                 String email = editEmail.getText().toString().trim();
                 String senha = editSenha.getText().toString().trim();
                 login(email, senha);
+                }
             }
         });
 
         btnPular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(Login.this, MainActivity.class);
-                startActivity(i);
+                if (pedirPermissao()){
+                    FirebaseAuth.getInstance().signOut();
+                    Intent i = new Intent(Login.this, MainActivity.class);
+                    startActivity(i);
+                }
+
             }
         });
 
@@ -109,5 +118,22 @@ public class Login extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER_VERTICAL, 0,0);
         toast.setDuration(Toast.LENGTH_SHORT);
         Toast.makeText(Login.this,msg,Toast.LENGTH_SHORT).show();
+    }
+
+    boolean pedirPermissao(){
+        if (ContextCompat.checkSelfPermission(Login.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(Login.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            if (ContextCompat.checkSelfPermission(Login.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(Login.this, "É necessario permitir a localização para usar o aplicativo",Toast.LENGTH_SHORT).show();
+                return false;
+
+            }else {
+
+                return true;
+            }
+        }else{
+            return true;
+        }
+
     }
 }

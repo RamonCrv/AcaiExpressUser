@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -11,20 +10,23 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.gs.myapplication.ui.slideshow.SlideshowFragment;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager fragmentManager;
     private AppBarConfiguration mAppBarConfiguration;
+    FirebaseAuth auth;
 
 
 
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        setNavigationViewListener();
+
+        auth = FirebaseAuth.getInstance();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
@@ -64,13 +71,24 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
                 || super.onSupportNavigateUp();
     }
 
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
-        if (id == R.id.nav_tools){
-            Toast.makeText(this.getBaseContext(),"VC APERTOU O BOTÃO tools",
-                    Toast.LENGTH_SHORT).show();
+        if (id == R.id.nav_Lista_de_Favoritos){
+            if (auth.getCurrentUser() != null){
+                Intent b = new Intent(this.getBaseContext(), Lista.class);
+                startActivity(b);
+            }else{
+                Toast.makeText(this.getBaseContext(),"É necessario estar logado para acessar a lista de favoritos",
+                        Toast.LENGTH_SHORT).show();
+            }
+
         }
-        return false;
+        return true;
     }
 }
