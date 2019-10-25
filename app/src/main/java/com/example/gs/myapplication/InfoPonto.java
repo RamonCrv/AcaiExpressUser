@@ -1,16 +1,13 @@
 package com.example.gs.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,20 +15,16 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Map;
-
-import io.opencensus.common.ServerStatsFieldEnums;
 
 public class InfoPonto extends AppCompatActivity {
     String url;
@@ -47,7 +40,7 @@ public class InfoPonto extends AppCompatActivity {
     public String idDoPonto;
     DatabaseReference databaseDoc2;
     DatabaseReference databaseDoc3;
-
+    public Button button;
     public Button voltar;
 
     private boolean taFavoritado;
@@ -57,6 +50,7 @@ public class InfoPonto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ponto);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         Intent b = new Intent(InfoPonto.this, Carregando.class);
         startActivity(b);
         inicializarComponentes();
@@ -75,14 +69,6 @@ public class InfoPonto extends AppCompatActivity {
        // Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
 
-        btnComent.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference databaseReference = firebaseDatabase.getReference("comente").child("comenterio").push();
-
-            }
-        }));
-
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +78,21 @@ public class InfoPonto extends AppCompatActivity {
     }
 
     private void eventoClicks() {
+
+        btnComent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (auth.getCurrentUser() != null){
+                    startActivity(new Intent(InfoPonto.this,Pop.class));
+                }else {
+                    Toast.makeText(InfoPonto.this, "É necessario estar logado para avaliar um ponto.",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
        btnestar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +118,7 @@ public class InfoPonto extends AppCompatActivity {
     }
 
     void inicializarComponentes(){
-        btnComent =(findViewById(R.id.btn_add));
+        btnComent =(findViewById(R.id.button20));
         ImagemDoPonto= (findViewById(R.id.ImgPt));
         nomeDoPonto  = (findViewById(R.id.PontNomeXML));
         StatusDoPonto =  (findViewById(R.id.StatusXML));

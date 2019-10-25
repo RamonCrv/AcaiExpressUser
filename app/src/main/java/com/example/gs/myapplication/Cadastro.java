@@ -25,7 +25,7 @@ public class Cadastro extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
         inicializarComponentes();

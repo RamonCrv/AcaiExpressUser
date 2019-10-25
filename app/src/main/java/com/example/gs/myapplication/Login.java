@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 
@@ -36,12 +38,15 @@ public class Login extends AppCompatActivity {
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         inicializarComponentes();
         pedirPermissao();
         eventoClicks();
 
         mAuth = FirebaseAuth.getInstance();
-
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference("scores");
+        scoresRef.keepSynced(true);
 
     }
 
@@ -95,6 +100,7 @@ public class Login extends AppCompatActivity {
                 public void onComplete(Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Intent i = new Intent(Login.this, MainActivity.class);
+
                         startActivity(i);
                         //alert("Logou");
                     } else {

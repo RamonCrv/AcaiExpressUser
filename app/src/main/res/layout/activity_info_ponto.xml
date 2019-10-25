@@ -11,13 +11,13 @@
         android:id="@+id/PontNomeXML"
         android:layout_width="415dp"
         android:layout_height="52dp"
+        android:layout_marginTop="36dp"
         android:text=""
         android:textAlignment="center"
         android:textColor="#FFC107"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,11 +25,14 @@
         android:id="@+id/ImgPt"
         android:layout_width="366dp"
         android:layout_height="286dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="76dp"
         android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/StatusXML"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -51,7 +54,7 @@
 
     <TextView
         android:id="@+id/precoXML"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text=""
         android:textAlignment="center"
@@ -59,41 +62,24 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
+        app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/ImgPt"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <EditText
-        android:id="@+id/coment"
-        android:layout_width="399dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="50dp"
-        android:ems="10"
-        android:gravity="start"
-        android:hint="Comente aqui..."
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ButtVoltarXML"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="@+id/ButtVoltarXML"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/ButtVoltarXML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:background="@drawable/btn1"
         android:text="Voltar"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coment" />
+        app:layout_constraintTop_toBottomOf="@+id/StatusXML"
+        app:layout_constraintVertical_bias="0.896" />
 
     <Button
         android:id="@+id/button2"
@@ -107,35 +93,35 @@
         app:layout_constraintEnd_toEndOf="@+id/precoXML"
         app:layout_constraintStart_toStartOf="@+id/precoXML"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609" />
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="67dp"
-        android:layout_height="37dp"
-        android:background="@drawable/btn1"
-        android:text="Enviar"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/coment"
-        app:layout_constraintEnd_toEndOf="@+id/coment"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="@+id/coment"
-        app:layout_constraintTop_toTopOf="@+id/coment"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintVertical_bias="0.631" />
 
     <ImageButton
         android:id="@+id/btnestar"
         android:layout_width="36dp"
         android:layout_height="38dp"
-        android:layout_marginTop="244dp"
         android:background="@drawable/estrelaoff"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.896"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/ImgPt"
+        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
+        app:layout_constraintVertical_bias="0.971"
         tools:srcCompat="@drawable/favorito"
         tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/button20"
+        android:layout_width="124dp"
+        android:layout_height="38dp"
+        android:background="@drawable/btn1"
+        android:text="Avaliar Local"
+        app:layout_constraintBottom_toTopOf="@+id/ButtVoltarXML"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StatusXML"
+        app:layout_constraintVertical_bias="0.484" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

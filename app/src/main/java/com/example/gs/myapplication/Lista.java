@@ -72,16 +72,21 @@ public class Lista extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()).child("Favorito");
 
+
         pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int i=1;
+                if (dataSnapshot.exists()){
+
+                }else {
+                    Toast.makeText(Lista.this, "Você não possui postos favoritados no momento2",Toast.LENGTH_SHORT).show();
+                }
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //Map<String, String> map = (Map) postSnapshot.getValue();
                     String teste = postSnapshot.getKey();
                     //idpT = map.values().toString();
                     //Toast.makeText(Lista.this, i+": "+teste,Toast.LENGTH_SHORT).show();
-                    i++;
+
 
                     DatabaseReference mDatabase2;
                     mDatabase2 = FirebaseDatabase.getInstance().getReference();

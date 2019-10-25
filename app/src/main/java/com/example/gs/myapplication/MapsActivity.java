@@ -3,24 +3,31 @@ import androidx.annotation.NonNull;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,14 +35,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener  {
     public MapView mapView;
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     public String postoKey;
     private View locationButton;
     private Button mOpenDialog;
+
+
+
+    FloatingActionButton floatingActionButton;
+    private BottomSheetBehavior mBottomSheetBehavior1;
+    LinearLayout tapactionlayout;
+    View bottomSheet;
+
+
+
     public TextView mInputDisplay;
+    private static final String ALLOWED_CHARACTERS ="0123456789QWERTYUIOPASDFGHJKLZXCVBNM";
     private static final String TAG = "MapsActivity";
     public static Bundle InfoSalvas = new Bundle();
     ArrayList Ponto = new ArrayList();
@@ -44,11 +63,52 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+
+       /* SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        tapactionlayout = (LinearLayout) findViewById(R.id.tap_action_layout);
+        bottomSheet = findViewById(R.id.bottom_sheet1);
+        mBottomSheetBehavior1 = BottomSheetBehavior.from(bottomSheet);
+        mBottomSheetBehavior1.setPeekHeight(120);
+        mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        mBottomSheetBehavior1.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    tapactionlayout.setVisibility(View.VISIBLE);
+                }
+
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    tapactionlayout.setVisibility(View.GONE);
+                }
+
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    tapactionlayout.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
+
+        tapactionlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mBottomSheetBehavior1.getState()==BottomSheetBehavior.STATE_COLLAPSED)
+                {
+                    mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
+                }
+            }
+        });
+
+*/
 
         try {
 
@@ -67,38 +127,27 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                 mapView.findViewById(Integer.parseInt("1")) != null) {
             // Get the button view
             View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+            locationButton.setVisibility(View.GONE);
             // and next place it, on bottom right (as Google Maps app)
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
-                    locationButton.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)locationButton.getLayoutParams();
             // position on right bottom
+
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            layoutParams.setMargins(0, 0, 30, 30);
+            layoutParams.setMargins(0, 0, 180, 180);
 
         }
 
-
         LatLng latLng = new LatLng(0.025921, -51.068596);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.8f));
-        //mMap.animateCamera(CameraUpdateFactory.zoomIn());
-        // mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         mMap.setTrafficEnabled(false);
+
         mMap.setMinZoomPreference(10.0f);
         mMap.setMaxZoomPreference(17.5f);
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         mMap.setMyLocationEnabled(true);
-
-
-
-        Person info = new Person("gg","1232","we","ds");
-        info.setBirthday("snowqualmie");
-        info.setSex("Hotel : excellent hotels available");
-        info.setName("Food : all types of restaurants available");
-        info.setNaosei0("Reach the site by bus, car and train.");
-
-
-
+        mMap.setPadding(0, 0, 30, 30);
     }
 
 
@@ -111,6 +160,16 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
     @Override
     public void onMyLocationClick(@NonNull Location location) {
+        mMap.setMinZoomPreference(12);
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(new LatLng(location.getLatitude(),
+                location.getLongitude()));
+
+        circleOptions.radius(200);
+        circleOptions.fillColor(Color.RED);
+        circleOptions.strokeWidth(6);
+
+        mMap.addCircle(circleOptions);
 
     }
 
@@ -152,6 +211,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             }
         });
 
+
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -173,10 +233,18 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                 return true;
             }
         });
-    }
-
-
 
     }
+
+    private static String getRandomString(final int sizeOfRandomString)
+    {
+        final Random random=new Random();
+        final StringBuilder sb=new StringBuilder(sizeOfRandomString);
+        for(int i=0;i<sizeOfRandomString;++i)
+            sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
+        return sb.toString();
+    }
+
+}
 
 

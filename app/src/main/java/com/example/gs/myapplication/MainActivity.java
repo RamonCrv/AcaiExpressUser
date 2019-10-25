@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
 
         setNavigationViewListener();
 

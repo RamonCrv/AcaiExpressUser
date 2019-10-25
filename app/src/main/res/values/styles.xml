@@ -9,8 +9,15 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
         <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="windowNoTitle">false</item>
+
+    </style>
+    <style name="AppTheme.Custom">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

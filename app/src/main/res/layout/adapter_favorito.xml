@@ -7,13 +7,13 @@
 
 
     <TextView
-        android:gravity="center"
-        android:textAlignment="center"
-        android:text="Nome do local"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
         android:id="@+id/localname"
-        android:layout_weight="66.6"/>
+        android:layout_width="602dp"
+        android:layout_height="92dp"
+        android:layout_weight="66.6"
+        android:gravity="center"
+        android:text="Nome do local"
+        android:textAlignment="center" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -24,25 +24,25 @@
         <TextView
             android:id="@+id/aberto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
             android:gravity="center"
             android:text="Aberto" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:layout_below="@+id/textView"
             android:gravity="center"
             android:text="Nao sei" />
 
         <TextView
-            android:gravity="center"
-            android:text="Nao sei2"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
             android:id="@+id/textView3"
-            android:layout_below="@+id/textView3"/>
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_below="@+id/textView3"
+            android:gravity="center"
+            android:text="Nao sei2" />
     </LinearLayout>
 
 </LinearLayout>

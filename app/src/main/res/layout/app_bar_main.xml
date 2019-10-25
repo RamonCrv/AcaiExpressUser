@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme.Custom"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -10,9 +11,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"/>
-
+        android:layout_height="wrap_content"/>
     <include layout="@layout/content_main" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +34,7 @@
         app:cardCornerRadius="0dp"
         app:cardElevation="8dp">
 
-    <include layout="@layout/activity_login"/>
+
 
 
     </com.google.android.material.card.MaterialCardView>

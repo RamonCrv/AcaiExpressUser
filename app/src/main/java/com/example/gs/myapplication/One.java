@@ -18,7 +18,6 @@ public class One extends AppCompatActivity {
         setContentView(R.layout.activity_one);
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_one);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
