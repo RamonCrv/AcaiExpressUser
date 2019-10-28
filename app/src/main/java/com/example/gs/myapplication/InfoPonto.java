@@ -50,7 +50,7 @@ public class InfoPonto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ponto);
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color2));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color3));
         Intent b = new Intent(InfoPonto.this, Carregando.class);
         startActivity(b);
         inicializarComponentes();
