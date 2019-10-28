@@ -35,16 +35,17 @@ public class Login extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        Intent i = new Intent(Login.this, One.class);
+        startActivity(i);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color2));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         inicializarComponentes();
         pedirPermissao();
         eventoClicks();
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        //  FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference("scores");
         scoresRef.keepSynced(true);
 

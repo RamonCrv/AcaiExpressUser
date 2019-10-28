@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 
 import androidx.annotation.Nullable;
-
+import androidx.core.content.ContextCompat;
 
 
 /**
@@ -29,6 +29,7 @@ public class MainFragment extends Fragment implements MyCustomDialog.OnInputSele
         mInputDisplay.setText(input);
     }
 
+
     private Button mOpenDialog;
     public TextView mInputDisplay;
 
@@ -38,7 +39,6 @@ public class MainFragment extends Fragment implements MyCustomDialog.OnInputSele
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         mOpenDialog = view.findViewById(R.id.open_dialog);
         mInputDisplay = view.findViewById(R.id.input_display);
-
         mOpenDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

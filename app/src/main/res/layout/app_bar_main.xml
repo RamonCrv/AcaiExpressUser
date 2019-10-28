@@ -6,9 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -24,15 +21,16 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.MaterialComponents.BottomSheet.Modal"
         android:id="@+id/bottomSheet"
+        style="@style/Widget.MaterialComponents.BottomSheet.Modal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:behavior_peekHeight="86dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         app:cardBackgroundColor="#eee"
         app:cardCornerRadius="0dp"
-        app:cardElevation="8dp">
+        app:cardElevation="8dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
 
 

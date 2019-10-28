@@ -16,20 +16,21 @@
         android:roundIcon="@mipmap/logoround"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Custom">
-        <activity android:name=".Notas"></activity>
+        <activity android:name=".sheet"></activity>
+        <activity android:name=".Notas" />
         <activity android:name=".Lista" />
-        <activity android:name=".Login" />
+        <activity android:name=".One"></activity>
         <activity android:name=".Cadastro" />
         <activity android:name=".Carregando" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".InfoPonto" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppTheme.Custom" />
-        <activity
-            android:name=".One"
-            android:theme="@style/AppTheme.Custom">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

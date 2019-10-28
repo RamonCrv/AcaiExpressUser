@@ -21,8 +21,8 @@ public class One extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(One.this,Login.class);
-                startActivity(i);
+                //Intent i = new Intent(One.this,Login.class);
+                //startActivity(i);
                 finish();
             }
         }, 4500);

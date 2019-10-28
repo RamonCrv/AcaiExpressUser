@@ -16,7 +16,7 @@ public class Carregando extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color2));
         setContentView(R.layout.activity_carregando);
         caregando();
         startt();
