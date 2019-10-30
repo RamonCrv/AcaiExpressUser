@@ -3,22 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/fundoapp2"
     android:layout_height="match_parent"
     tools:context=".Notas">
+
     <Button
-    android:id="@+id/enviar"
-    android:layout_width="99dp"
-    android:layout_height="60dp"
-    android:layout_below="@+id/smile_rating"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginStart="158dp"
-    android:layout_marginTop="149dp"
-    android:layout_marginEnd="154dp"
-    android:layout_marginBottom="111dp"
-    android:background="@drawable/btn1"
-    android:text="Enviar" />
+        android:id="@+id/enviar"
+        android:layout_width="99dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/smile_rating"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="111dp"
+        android:background="@drawable/btn1"
+        android:text="Enviar"
+        android:textColor="#FFFFFF" />
 
 
     <com.hsalf.smilerating.SmileRating

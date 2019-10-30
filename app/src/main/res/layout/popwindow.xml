@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/texts"
+    android:background="@drawable/fundoapp2"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/recCodAvaV"
-        android:layout_width="212dp"
-        android:layout_height="29dp"
+        android:layout_width="208dp"
+        android:layout_height="43dp"
         android:background="@drawable/texts"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:text="Entre com o codido do local"
+        android:textColor="#EEB802"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/recCodAvaV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
