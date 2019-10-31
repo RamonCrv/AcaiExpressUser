@@ -3,6 +3,7 @@ package com.example.gs.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.hsalf.smilerating.BaseRating;
@@ -14,7 +15,6 @@ public class Notas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
-
         SmileRating smileRating = (SmileRating) findViewById(R.id.smile_rating);
         smileRating.setNameForSmile(BaseRating.BAD,"Ruim") ;
         smileRating.setNameForSmile(BaseRating.GOOD,"Bom") ;

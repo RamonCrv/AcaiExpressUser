@@ -49,7 +49,7 @@
             app:layout_constraintHorizontal_bias="0.586"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.106" />
+            app:layout_constraintVertical_bias="0.129" />
 
         <EditText
             android:id="@+id/editSenha"
@@ -73,14 +73,15 @@
             android:id="@+id/ConfSenha"
             android:layout_width="271dp"
             android:layout_height="46dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/texts"
             android:drawableLeft="@drawable/usar"
-            android:layout_marginTop="17dp"
             android:ems="10"
             android:hint="Confirmar Senha"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editSenha"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editSenha"
             app:layout_constraintTop_toBottomOf="@+id/editSenha" />
 
         <Button
@@ -88,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="159dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="44dp"
             android:background="@drawable/btn1"
             android:text="Voltar"
             app:layout_constraintBottom_toBottomOf="parent"
