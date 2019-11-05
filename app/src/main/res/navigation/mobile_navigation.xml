@@ -3,46 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/activityLocation">
+    app:startDestination="@+id/nav_home">
 
-    <activity
-        android:id="@+id/carregando"
-        android:name="com.example.gs.myapplication.Carregando"
-        android:label="activity_carregando"
-        tools:layout="@layout/activity_carregando" />
-    <activity
-        android:id="@+id/activityLocation"
-        android:name="com.example.gs.myapplication.ActivityLocation"
-        android:label="ActivityLocation" />
-    <activity
-        android:id="@+id/cadastro"
-        android:name="com.example.gs.myapplication.Cadastro"
-        android:label="activity_cadastro"
-        tools:layout="@layout/activity_cadastro" />
-    <activity
-        android:id="@+id/login"
-        android:name="com.example.gs.myapplication.Login"
-        android:label="activity_login"
-        tools:layout="@layout/activity_login" />
     <fragment
-        android:id="@+id/slideshowFragment"
+        android:id="@+id/nav_home"
+        android:name="com.example.gs.myapplication.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.gs.myapplication.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
         android:name="com.example.gs.myapplication.ui.slideshow.SlideshowFragment"
-        android:label="SlideshowFragment" >
-        <action
-            android:id="@+id/action_slideshowFragment_to_carregando"
-            app:destination="@id/carregando" />
-        <action
-            android:id="@+id/action_slideshowFragment_to_mapsActivity"
-            app:destination="@id/mapsActivity" />
-    </fragment>
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
     <fragment
-        android:id="@+id/mapsActivity"
-        android:name="com.example.gs.myapplication.MapsActivity"
-        android:label="activity_maps"
-        tools:layout="@layout/activity_maps" />
-    <activity
-        android:id="@+id/one"
-        android:name="com.example.gs.myapplication.One"
-        android:label="activity_one"
-        tools:layout="@layout/activity_one" />
+        android:id="@+id/nav_tools"
+        android:name="com.example.gs.myapplication.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.gs.myapplication.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.gs.myapplication.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
 </navigation>
