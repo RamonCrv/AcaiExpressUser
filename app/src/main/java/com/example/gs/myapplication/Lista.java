@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -13,6 +14,7 @@ import android.renderscript.Sampler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,6 +50,8 @@ public class Lista extends AppCompatActivity {
 
 
 
+
+
    /* String[] nome = {"nome aki"};
     String[] aberto = {"aberto aki"};
     String[] naosei1 = {"naosei1 aki"};
@@ -61,6 +65,8 @@ public class Lista extends AppCompatActivity {
        // Log.d(TAG, "onCreate: Started.");
         arrayList = new ArrayList<>();
         listView =(ListView) findViewById(R.id.listView);
+
+
 
 
         arrayAdapter = new ArrayAdapter(this, R.layout.adapter_favorito, R.id.localname,arrayList) {
@@ -84,6 +90,19 @@ public class Lista extends AppCompatActivity {
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()).child("Favorito");
+
+        //listview clicavel////
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                
+                Intent i = new Intent(Lista.this, InfoPonto.class);
+                startActivity(i);
+            }
+        });
+
 
 
         pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -159,6 +178,9 @@ public class Lista extends AppCompatActivity {
                 }
             }
 
+
+
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -173,7 +195,7 @@ public class Lista extends AppCompatActivity {
     void pegarLocalizacao (Double lat, Double lon){
 
 
-
-
     }
+
+
 }
