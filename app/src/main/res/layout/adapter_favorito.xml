@@ -6,7 +6,6 @@ android:background="@drawable/favfundo"
     android:layout_height="match_parent"
     android:weightSum="100">
 
-
     <TextView
         android:id="@+id/localname"
         android:layout_width="602dp"
