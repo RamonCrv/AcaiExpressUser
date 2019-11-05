@@ -6,14 +6,17 @@
     <group android:checkableBehavior="all">
 
         <item
+            android:id="@+id/nav_Lista_de_Favoritos"
+            android:icon="@drawable/star2"
+            android:title="Favoritos" />
+
+
+        <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
             android:title="Configurar" />
 
-        <item
-        android:id="@+id/nav_Lista_de_Favoritos"
-        android:icon="@drawable/star2"
-        android:title="Favoritos" />
+
 
         <item
             android:id="@+id/nav_send"

@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/ImgPt"
-        android:layout_width="366dp"
-        android:layout_height="286dp"
+        android:layout_width="422dp"
+        android:layout_height="288dp"
         android:layout_marginTop="76dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/StatusXML"
@@ -120,7 +120,7 @@
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
         app:layout_constraintVertical_bias="0.050000012" />

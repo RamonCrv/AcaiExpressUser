@@ -72,9 +72,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
+
     }
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
 
 
         try {
@@ -91,7 +92,30 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
 
         mMap = googleMap;
+
+        Thread t = new Thread(){
+            @Override
+            public void run() {
+                try{
+                    while (!isInterrupted()){
+                        Thread.sleep(3000);
+                       getActivity().runOnUiThread(new Runnable(){
+                            @Override
+                            public void run() {
+                                mMap.clear();
+                                criarPontos(googleMap);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        t.start();
+
         criarPontos(googleMap);
+
+
 
 
 
@@ -167,7 +191,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     LatLng posNoMap = new LatLng(latitude, longitude);
                     if(st.equals("Aberto")){
 
-                        final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ponto_aberto2_background)));
+                        final Marker ptMarker = mMap.addMarker(new MarkerOptions().position(posNoMap).title(title).icon(BitmapDescriptorFactory.fromResource(R.mipmap.markon)));
 
 
                     }else{
