@@ -1,7 +1,13 @@
 package com.example.gs.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.util.Log;
@@ -12,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -22,6 +29,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.DecimalFormat;
+import java.util.Map;
 import com.google.firestore.v1.Value;
 
 import java.util.ArrayList;
@@ -34,6 +44,8 @@ public class Lista extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     FirebaseAuth auth;
     String idpT;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+
 
 
    /* String[] nome = {"nome aki"};
@@ -49,6 +61,7 @@ public class Lista extends AppCompatActivity {
        // Log.d(TAG, "onCreate: Started.");
         arrayList = new ArrayList<>();
         listView =(ListView) findViewById(R.id.listView);
+
 
         arrayAdapter = new ArrayAdapter(this, R.layout.adapter_favorito, R.id.localname,arrayList) {
 
@@ -96,10 +109,43 @@ public class Lista extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
+                            String latP = dataSnapshot.child("latiT").getValue().toString();
+                            String longP = dataSnapshot.child("longT").getValue().toString();
+                            Double LatPDb = Double.parseDouble(latP);
+                            Double LongPDb = Double.parseDouble(longP);
+
+
+
+                            Double lat  = 0.0;
+                            Double  longi= 0.0;
+                            Location location;
+
+
+                            if (ActivityCompat.checkSelfPermission(Lista.this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
+                            }else{
+
+                                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                                location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                                if (location!= null){
+                                    lat = location.getLatitude();
+                                    longi = location.getLongitude();
+                                }
+
+                            }
+
+                            float results []= new float[10];
+                            Location.distanceBetween(lat, longi, LatPDb, LongPDb, results);
+                            float distanciaEmKm = results[0]/1000;
+
+
+
+
+
                             String nomeDoPt = dataSnapshot.child("nome").getValue().toString();
                             String preso = dataSnapshot.child("preso").getValue().toString();
                             String aberto = dataSnapshot.child("aberto").getValue().toString();
-                            arrayList.add(new Person(nomeDoPt,aberto,preso,"yzy"));
+                            arrayList.add(new Person(nomeDoPt,aberto,"R$"+preso,df2.format(distanciaEmKm)+" Km"));
                             arrayAdapter.notifyDataSetChanged();
                             listView.setAdapter((arrayAdapter));
 
@@ -117,44 +163,17 @@ public class Lista extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        /*
-        pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //These are all of your children.
-                Map<String, Object> ponto2 = (Map<String, Object>) dataSnapshot.getValue();
-                for (String childKey: ponto2.keySet()) {
-                    Map<String, Object> atributosDoPonto = (Map<String, Object>) ponto2.get(childKey);
-                    //String idDoPonto = (String) atributosDoPonto.get(atributosDoPonto.toString());
-                    String idDoPonto = (String) atributosDoPonto.get(v);
-                    Toast.makeText(Lista.this, idDoPonto,
-                            Toast.LENGTH_SHORT).show();
-
-
-                    DatabaseReference mDatabase;
-                    mDatabase = FirebaseDatabase.getInstance().getReference();
-                    DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()).child("Favorito");
-                    pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-
-
-
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        */
-        //arrayList.add(new Person("GS1","gs","abretoo","yzy"));
-
 
 
         arrayAdapter.notifyDataSetChanged();
         listView.setAdapter((arrayAdapter));
+
+    }
+
+    void pegarLocalizacao (Double lat, Double lon){
+
+
+
 
     }
 }

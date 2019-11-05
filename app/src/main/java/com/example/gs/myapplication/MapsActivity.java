@@ -1,10 +1,15 @@
 package com.example.gs.myapplication;
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +41,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener  {
     public MapView mapView;
@@ -57,6 +64,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     private static final String ALLOWED_CHARACTERS ="0123456789QWERTYUIOPASDFGHJKLZXCVBNM";
     private static final String TAG = "MapsActivity";
     public static Bundle InfoSalvas = new Bundle();
+    public static Bundle userLat = new Bundle();
+    public static Bundle userLong= new Bundle();
     ArrayList Ponto = new ArrayList();
 
     @Override
@@ -67,48 +76,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-
-       /* SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        tapactionlayout = (LinearLayout) findViewById(R.id.tap_action_layout);
-        bottomSheet = findViewById(R.id.bottom_sheet1);
-        mBottomSheetBehavior1 = BottomSheetBehavior.from(bottomSheet);
-        mBottomSheetBehavior1.setPeekHeight(120);
-        mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        mBottomSheetBehavior1.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    tapactionlayout.setVisibility(View.VISIBLE);
-                }
-
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    tapactionlayout.setVisibility(View.GONE);
-                }
-
-                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
-                    tapactionlayout.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
-            }
-        });
-
-        tapactionlayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mBottomSheetBehavior1.getState()==BottomSheetBehavior.STATE_COLLAPSED)
-                {
-                    mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }
-            }
-        });
-
-*/
 
         try {
 
@@ -121,8 +88,13 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style. Error: ", e);
         }
+
+
         mMap = googleMap;
         criarPontos(googleMap);
+
+
+
         if (mapView != null  &&
                 mapView.findViewById(Integer.parseInt("1")) != null) {
             // Get the button view
@@ -148,6 +120,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         mMap.setOnMyLocationClickListener(this);
         mMap.setMyLocationEnabled(true);
         mMap.setPadding(0, 0, 30, 30);
+
     }
 
 
@@ -219,15 +192,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                 MapsActivity.InfoSalvas.putString("key", key);
 
 
-                //String str = MapsActivity.InfoSalvas.getString("key");
-               // Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
-
-              //  MainFragment fragment = new MainFragment();
-
-               // FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.container, fragment, "MainFragment");
-              //  transaction.commit();
-
                 Intent i = new Intent(getActivity(),InfoPonto.class);
                startActivity(i);
                 return true;
@@ -244,6 +208,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
         return sb.toString();
     }
+
+
 
 }
 
