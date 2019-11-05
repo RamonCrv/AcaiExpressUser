@@ -14,17 +14,13 @@
         android:id="@+id/nav_Lista_de_Favoritos"
         android:icon="@drawable/star2"
         android:title="Favoritos" />
-    </group>
 
-    <item android:title="Mais +++">
-        <menu>
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/menu_send" />
+</group>
 
-        </menu>
-    </item>
 
 </menu>
 

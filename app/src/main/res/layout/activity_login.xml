@@ -39,10 +39,11 @@
             android:textColor="#66f9B0"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editSenha"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="@+id/editSenha"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.612" />
+            app:layout_constraintVertical_bias="0.581" />
 
         <EditText
             android:id="@+id/editSenha"
@@ -59,7 +60,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/editEmail"
             app:layout_constraintTop_toBottomOf="@+id/editEmail"
-            app:layout_constraintVertical_bias="0.317" />
+            app:layout_constraintVertical_bias="0.514" />
 
         <EditText
             android:id="@+id/editEmail"
@@ -75,10 +76,10 @@
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.565"
+            app:layout_constraintHorizontal_bias="0.551"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.284" />
+            app:layout_constraintVertical_bias="0.325" />
 
         <LinearLayout
             android:layout_width="0dp"

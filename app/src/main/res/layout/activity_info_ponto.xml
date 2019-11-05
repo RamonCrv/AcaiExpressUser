@@ -97,21 +97,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.631" />
 
-    <ImageButton
-        android:id="@+id/btnestar"
-        android:layout_width="36dp"
-        android:layout_height="38dp"
-        android:background="@drawable/estrelaoff"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/ImgPt"
-        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="@+id/ImgPt"
-        app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
-        app:layout_constraintVertical_bias="0.971"
-        tools:srcCompat="@drawable/favorito"
-        tools:visibility="visible" />
-
     <Button
         android:id="@+id/button20"
         android:layout_width="124dp"
@@ -125,6 +110,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StatusXML"
         app:layout_constraintVertical_bias="0.484" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="72dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="244dp"
+        android:src="@color/color3"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="@+id/ImgPt"
+        app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <ImageButton
+        android:id="@+id/btnestar"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/estrelaoff"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/StatusXML"
+        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="@+id/ImgPt"
+        app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/favorito"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
