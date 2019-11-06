@@ -178,7 +178,7 @@ public class InfoPonto extends AppCompatActivity {
         databaseDoc3.child(auth.getCurrentUser().getUid()).child("Favorito").child(idDoPonto).removeValue();
     }
 
-    public void verificarFavoritos(){
+ public void verificarFavoritos(){
         eFavorito = false;
         btnestar.setBackgroundResource(R.drawable.estrelaoff);
         DatabaseReference mDatabase;

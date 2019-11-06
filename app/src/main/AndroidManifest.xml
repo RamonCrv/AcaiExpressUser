@@ -16,12 +16,19 @@
         android:roundIcon="@mipmap/logoround"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Custom">
-        <activity android:name=".sheet"></activity>
-        <activity android:name=".Notas" />
-        <activity android:name=".Lista" />
-        <activity android:name=".One"></activity>
-        <activity android:name=".Cadastro" />
-        <activity android:name=".Carregando" />
+        <activity android:name=".sheet"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Notas"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Lista"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".One"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Cadastro"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Carregando"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -30,7 +37,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Login">
+        <activity android:name=".Login"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
