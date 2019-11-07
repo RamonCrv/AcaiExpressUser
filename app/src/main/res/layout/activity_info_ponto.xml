@@ -12,8 +12,8 @@
 
     <TextView
         android:id="@+id/PontNomeXML"
-        android:layout_width="415dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text=""
         android:textAlignment="center"
@@ -22,14 +22,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.015" />
 
     <ImageView
         android:id="@+id/ImgPt"
-        android:layout_width="422dp"
+        android:layout_width="0dp"
         android:layout_height="288dp"
         android:layout_marginTop="76dp"
         android:scaleType="fitXY"
@@ -61,19 +60,18 @@
 
     <TextView
         android:id="@+id/precoXML"
-        android:layout_width="191dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text=""
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
-        app:layout_constraintTop_toTopOf="@+id/ImgPt"
-        app:layout_constraintVertical_bias="0.439" />
+        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/ButtVoltarXML"
@@ -91,8 +89,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="186dp"
-        android:layout_height="47dp"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="212dp"
         android:background="@drawable/btn1"
         android:text="Falar com Vendedor"
@@ -100,15 +98,15 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/precoXML"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/precoXML"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
+        app:layout_constraintVertical_bias="0.7" />
 
     <Button
         android:id="@+id/button20"
-        android:layout_width="124dp"
-        android:layout_height="38dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn1"
         android:text="Avaliar Local"
         android:textColor="#FFFFFF"
@@ -127,12 +125,12 @@
         android:src="@color/color3"
         app:civ_border_color="#FFFFFF"
         app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/precoXML"
+        app:layout_constraintBottom_toBottomOf="@+id/ImgPt"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/btnestar"

@@ -8,7 +8,7 @@ android:background="@drawable/favfundo"
 
     <TextView
         android:id="@+id/localname"
-        android:layout_width="643dp"
+        android:layout_width="843dp"
         android:layout_height="90dp"
         android:layout_weight="66.6"
         android:gravity="center"
@@ -83,7 +83,7 @@ android:background="@drawable/favfundo"
             android:gravity="center|left"
             android:text="Nota"
             android:textColor="#FFC107"
-            android:textSize="24sp" />
+            android:textSize="36sp" />
     </LinearLayout>
 
 
