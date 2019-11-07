@@ -91,8 +91,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         }
 
 
-        mMap = googleMap;
 
+        /*
         Thread t = new Thread(){
             @Override
             public void run() {
@@ -113,6 +113,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         };
         t.start();
 
+         */
+        mMap = googleMap;
         criarPontos(googleMap);
 
 

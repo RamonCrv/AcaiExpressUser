@@ -9,20 +9,23 @@
     android:layout_height="match_parent"
     tools:context=".InfoPonto">
 
+
     <TextView
         android:id="@+id/PontNomeXML"
         android:layout_width="415dp"
         android:layout_height="52dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:text=""
         android:textAlignment="center"
         android:textColor="#FFC107"
         android:textSize="40dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/ImgPt"
@@ -30,12 +33,12 @@
         android:layout_height="288dp"
         android:layout_marginTop="76dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/StatusXML"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
+        app:layout_constraintVertical_bias="0.038"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -53,22 +56,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/precoXML"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="191dp"
+        android:layout_height="37dp"
         android:text=""
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
-        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/ImgPt"
+        app:layout_constraintVertical_bias="0.439" />
 
     <Button
         android:id="@+id/ButtVoltarXML"
@@ -78,9 +83,9 @@
         android:text="Voltar"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button20"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button20"
         app:layout_constraintTop_toBottomOf="@+id/StatusXML"
         app:layout_constraintVertical_bias="0.896" />
 
@@ -88,15 +93,17 @@
         android:id="@+id/button2"
         android:layout_width="186dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="212dp"
         android:background="@drawable/btn1"
         android:text="Falar com Vendedor"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/precoXML"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/precoXML"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.792" />
 
     <Button
         android:id="@+id/button20"
@@ -106,39 +113,38 @@
         android:text="Avaliar Local"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/ButtVoltarXML"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/StatusXML"
         app:layout_constraintVertical_bias="0.484" />
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
         android:layout_width="72dp"
         android:layout_height="73dp"
         android:layout_marginTop="244dp"
         android:src="@color/color3"
         app:civ_border_color="#FFFFFF"
         app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/precoXML"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.394" />
 
     <ImageButton
         android:id="@+id/btnestar"
         android:layout_width="36dp"
         android:layout_height="38dp"
-        android:layout_marginTop="268dp"
         android:background="@drawable/estrelaoff"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/StatusXML"
-        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintStart_toStartOf="@+id/ImgPt"
-        app:layout_constraintTop_toBottomOf="@+id/PontNomeXML"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+        app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+        app:layout_constraintStart_toStartOf="@+id/circleImageView"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView"
+        app:layout_constraintVertical_bias="0.514"
         tools:srcCompat="@drawable/favorito"
         tools:visibility="visible" />
 

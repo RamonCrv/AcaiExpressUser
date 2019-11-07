@@ -66,9 +66,6 @@ public class Pop extends Activity {
                     Intent i = new Intent(Pop.this, Notas.class);
                     startActivity(i);
 
-                    Toast.makeText(Pop.this, "Avaliação autorizada, id: "+id,
-                            Toast.LENGTH_SHORT).show();
-
                 }else {
                     Toast.makeText(Pop.this, "Codigo incorreto",
                             Toast.LENGTH_SHORT).show();

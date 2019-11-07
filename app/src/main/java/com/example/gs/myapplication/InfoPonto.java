@@ -61,9 +61,7 @@ public class InfoPonto extends AppCompatActivity {
         if(auth.getCurrentUser() != null){
             verificarFavoritos();
         }
-
         eventoClicks();
-
 
         //String str = MapsActivity.InfoSalvas.getString("key");
        // Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
@@ -75,6 +73,8 @@ public class InfoPonto extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     private void eventoClicks() {
@@ -125,6 +125,9 @@ public class InfoPonto extends AppCompatActivity {
         PrecoDoPonto = (findViewById(R.id.precoXML));
         voltar = (findViewById(R.id.ButtVoltarXML));
         btnestar = (findViewById(R.id.btnestar));
+
+
+
     }
 
     public void BuscarImg(){
@@ -183,7 +186,7 @@ public class InfoPonto extends AppCompatActivity {
         btnestar.setBackgroundResource(R.drawable.estrelaoff);
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid());
+        DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()+"/Favorito");
         //DatabaseReference  pontoRef  = pontoRef0.child("Favorito");
         pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -211,11 +214,6 @@ public class InfoPonto extends AppCompatActivity {
             }
         });
     }
-
-    public void trocarImagem(){
-
-    }
-
 
 
 
