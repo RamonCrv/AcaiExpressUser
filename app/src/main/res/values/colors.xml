@@ -3,10 +3,40 @@
     <color name="colorPrimary">#f1a1df</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorAccentDark">#F50057</color>
+    <color name="colorAccentLight">#FF80AB</color>
     <color name="color1">#1d2c4d</color>
     <color name="color2">#dca0dc</color>
     <color name="color3">#883d78</color>
     <color name="color4">#4d074d</color>
     <color name="color5">#883d78</color>
     <color name="color6">#FFFFFF</color>
+    <color name="grey_3">#f7f7f7</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+    <color name="grey_95">#1a1a1a</color>
+    <color name="grey_100_">#0d0d0d</color>
+    <color name="yellow_50">#FFFDE7</color>
+    <color name="yellow_100">#FFF9C4</color>
+    <color name="yellow_200">#FFF59D</color>
+    <color name="yellow_300">#FFF176</color>
+    <color name="yellow_400">#FFEE58</color>
+    <color name="yellow_500">#FFEB3B</color>
+    <color name="yellow_600">#FDD835</color>
+    <color name="yellow_700">#FBC02D</color>
+    <color name="yellow_800">#F9A825</color>
+    <color name="yellow_900">#F57F17</color>
+    <color name="yellow_A100">#FFFF8D</color>
+    <color name="yellow_A200">#FFFF00</color>
+    <color name="yellow_A400">#FFEA00</color>
+    <color name="yellow_A700">#FFD600</color>
+
+
+
+
 </resources>

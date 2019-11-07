@@ -50,13 +50,6 @@ public class Lista extends AppCompatActivity {
 
 
 
-
-
-   /* String[] nome = {"nome aki"};
-    String[] aberto = {"aberto aki"};
-    String[] naosei1 = {"naosei1 aki"};
-    String[] naosei2 = {"naosei2 aki"};*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,11 +71,13 @@ public class Lista extends AppCompatActivity {
                 TextView Aberto = (TextView) view.findViewById(R.id.aberto);
                 TextView naosei1 = (TextView) view.findViewById(R.id.textView4);
                 TextView naosei2 = (TextView) view.findViewById(R.id.textView3);
+                TextView nota = (TextView) view.findViewById(R.id.textView5);
 
                 localname.setText(arrayList.get(position).Name);
                 Aberto.setText(arrayList.get(position).Sex);
                 naosei1.setText(arrayList.get(position).Birthday);
                 naosei2.setText(arrayList.get(position).Naosei0);
+                nota.setText(arrayList.get(position).mednota);
                 return view;
             }
         };
@@ -140,7 +135,7 @@ public class Lista extends AppCompatActivity {
                 if (dataSnapshot.exists()){
 
                 }else {
-                    Toast.makeText(Lista.this, "Você não possui postos favoritados no momento2",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Lista.this, "Você não possui postos favoritados no momento",Toast.LENGTH_SHORT).show();
                 }
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
@@ -186,14 +181,12 @@ public class Lista extends AppCompatActivity {
                             float distanciaEmKm = results[0]/1000;
 
 
-
-
-
                             String nomeDoPt = dataSnapshot.child("nome").getValue().toString();
                             String preso = dataSnapshot.child("preso").getValue().toString();
                             String aberto = dataSnapshot.child("aberto").getValue().toString();
                             String idDoPT = dataSnapshot.child("id").getValue().toString();
-                            arrayList.add(new Person(nomeDoPt,aberto,"R$"+preso,df2.format(distanciaEmKm)+" Km", idDoPT));
+                            String mednota = dataSnapshot.child("mediaAv").getValue().toString();
+                            arrayList.add(new Person(nomeDoPt,aberto,"R$"+preso,df2.format(distanciaEmKm)+" Km", idDoPT,mednota));
                             arrayAdapter.notifyDataSetChanged();
                             listView.setAdapter((arrayAdapter));
 
