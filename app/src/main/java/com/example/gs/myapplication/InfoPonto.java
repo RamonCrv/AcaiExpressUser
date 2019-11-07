@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -56,6 +57,19 @@ public class InfoPonto extends AppCompatActivity {
         inicializarComponentes();
         BuscarImg();
         BuscarDoc();
+        DatabaseReference databaseDoc5;
+        databaseDoc5 = FirebaseDatabase.getInstance().getReference();
+        databaseDoc5.child("Ponto").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+               BuscarDoc();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         firebaseDatabase = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser() != null){
@@ -182,30 +196,19 @@ public class InfoPonto extends AppCompatActivity {
     }
 
  public void verificarFavoritos(){
+        String str = MapsActivity.InfoSalvas.getString("key");
         eFavorito = false;
         btnestar.setBackgroundResource(R.drawable.estrelaoff);
         DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()+"/Favorito");
-        //DatabaseReference  pontoRef  = pontoRef0.child("Favorito");
-        pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Usuario/"+auth.getCurrentUser().getUid()+"/Favorito/"+str);
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //These are all of your children.
-                Map<String, Object> ponto2 = (Map<String, Object>) dataSnapshot.getValue();
-                if (dataSnapshot.getValue() != null){
-                    for (String childKey: ponto2.keySet()) {
-                        Map<String, Object> codigoDoPonto = (Map<String, Object>) ponto2.get(childKey);
-                        String la = (String) codigoDoPonto.get(idDoPonto);
-                        if (la != null){
-                            if (la.equals(idDoPonto)){
-                                eFavorito = true;
-                                btnestar.setBackgroundResource(R.drawable.estrelaon);
-                            }
-                        }
-
-                    }
-                }
+               if (dataSnapshot.exists()){
+                   eFavorito = true;
+                   btnestar.setBackgroundResource(R.drawable.estrelaon);
+               }
 
             }
             @Override
@@ -213,6 +216,7 @@ public class InfoPonto extends AppCompatActivity {
 
             }
         });
+
     }
 
 

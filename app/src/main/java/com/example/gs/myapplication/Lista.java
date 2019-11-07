@@ -86,10 +86,25 @@ public class Lista extends AppCompatActivity {
                 return view;
             }
         };
+        //lista();
+        DatabaseReference databaseDoc5;
+        databaseDoc5 = FirebaseDatabase.getInstance().getReference();
 
-        DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()).child("Favorito");
+        databaseDoc5.child("Ponto").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                arrayList.clear();
+                lista();
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
         //listview clicavel////
 
@@ -97,7 +112,11 @@ public class Lista extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                
+                String idS = String.valueOf(id);
+                int idInt = Integer.parseInt(idS);
+
+                MapsActivity.InfoSalvas.putString("key",  arrayList.get(idInt).getIdPt());
+
                 Intent i = new Intent(Lista.this, InfoPonto.class);
                 startActivity(i);
             }
@@ -105,6 +124,16 @@ public class Lista extends AppCompatActivity {
 
 
 
+
+        arrayAdapter.notifyDataSetChanged();
+        listView.setAdapter((arrayAdapter));
+
+    }
+
+    void lista (){
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()).child("Favorito");
         pontoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -114,10 +143,9 @@ public class Lista extends AppCompatActivity {
                     Toast.makeText(Lista.this, "Você não possui postos favoritados no momento2",Toast.LENGTH_SHORT).show();
                 }
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //Map<String, String> map = (Map) postSnapshot.getValue();
+
                     String teste = postSnapshot.getKey();
-                    //idpT = map.values().toString();
-                    //Toast.makeText(Lista.this, i+": "+teste,Toast.LENGTH_SHORT).show();
+
 
 
                     DatabaseReference mDatabase2;
@@ -164,7 +192,8 @@ public class Lista extends AppCompatActivity {
                             String nomeDoPt = dataSnapshot.child("nome").getValue().toString();
                             String preso = dataSnapshot.child("preso").getValue().toString();
                             String aberto = dataSnapshot.child("aberto").getValue().toString();
-                            arrayList.add(new Person(nomeDoPt,aberto,"R$"+preso,df2.format(distanciaEmKm)+" Km"));
+                            String idDoPT = dataSnapshot.child("id").getValue().toString();
+                            arrayList.add(new Person(nomeDoPt,aberto,"R$"+preso,df2.format(distanciaEmKm)+" Km", idDoPT));
                             arrayAdapter.notifyDataSetChanged();
                             listView.setAdapter((arrayAdapter));
 
@@ -178,24 +207,13 @@ public class Lista extends AppCompatActivity {
                 }
             }
 
-
-
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
 
-
-        arrayAdapter.notifyDataSetChanged();
-        listView.setAdapter((arrayAdapter));
-
     }
 
-    void pegarLocalizacao (Double lat, Double lon){
-
-
-    }
 
 
 }

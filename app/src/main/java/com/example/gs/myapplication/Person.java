@@ -9,14 +9,22 @@ public class Person {
      String Birthday;
      String Sex;
      String Naosei0;
+     String idPt;
 
+    public String getIdPt() {
+        return idPt;
+    }
 
+    public void setIdPt(String idPt) {
+        this.idPt = idPt;
+    }
 
-    public Person(String name, String birthday, String sex,String naosei0) {
+    public Person(String name, String birthday, String sex, String naosei0, String IdPt) {
         this.Birthday = birthday;
         this.Name = name;
         this.Sex = sex;
         this.Naosei0 = naosei0;
+        this.idPt = IdPt;
     }
 
     public String getName() {

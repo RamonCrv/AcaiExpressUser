@@ -68,7 +68,7 @@ public class Notas extends AppCompatActivity {
         smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
             @Override
             public void onRatingSelected(int level, boolean reselected) {
-                Toast.makeText(Notas.this, "Seu Voto Foi :"+ level+" Estrelas",Toast.LENGTH_SHORT).show();
+
             }
         });
         clicks();
@@ -89,47 +89,86 @@ public class Notas extends AppCompatActivity {
 
     void addAv(){
         String str = MapsActivity.InfoSalvas.getString("key");
-        databaseDoc = FirebaseDatabase.getInstance().getReference().child("Usuario").child(auth.getCurrentUser().getUid()).child("PontosAvaliados").child(str);
-        databaseDoc.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Usuario/"+auth.getCurrentUser().getUid()+"/PontosAvaliados/"+str);
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        databaseDoc2 = FirebaseDatabase.getInstance().getReference();
-        databaseDoc2.child("Ponto").orderByChild("id").equalTo(str).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
+                //These are all of your children.
+                if (dataSnapshot.exists()){
                     String str = MapsActivity.InfoSalvas.getString("key");
-                    float tdav = Float.parseFloat(dataSnapshot.child(str).child("TotalAv").getValue().toString());
-                    float vtav = Float.parseFloat(dataSnapshot.child(str).child("SomaAv").getValue().toString());
-                    vtav+=notaDoUser;
-                    tdav+=1;
-                    float media= vtav/tdav;
-                    String mediaS = String.valueOf(media);
-                    String tdavS = String.valueOf(tdav);
-                    String vtavS = String.valueOf(vtav);
-                    salvarNosFavoritos(str);
-                    FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("TotalAv").setValue(tdavS);
-                    FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("SomaAv").setValue(vtavS);
-                    FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("mediaAv").setValue(mediaS);
+                    databaseDoc2 = FirebaseDatabase.getInstance().getReference();
+                    databaseDoc2.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
 
-                }else {
+                                String str = MapsActivity.InfoSalvas.getString("key");
 
+                                float tdav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/TotalAv").getValue().toString());
+                                float vtav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/SomaAv").getValue().toString());
+
+                               int notaAtual = Integer.parseInt(dataSnapshot.child("Usuario/"+auth.getCurrentUser().getUid()+"/PontosAvaliados/"+str+"/Nota").getValue().toString());
+
+                                vtav = vtav - notaAtual;
+                                vtav+=notaDoUser;
+
+                                float media= vtav/tdav;
+                                String mediaS = String.valueOf(media);
+                                String tdavS = String.valueOf(tdav);
+                                String vtavS = String.valueOf(vtav);
+                                salvarNosFavoritos(str);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("TotalAv").setValue(tdavS);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("SomaAv").setValue(vtavS);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("mediaAv").setValue(mediaS);
+
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                }else{
+                    String str = MapsActivity.InfoSalvas.getString("key");
+                    databaseDoc2 = FirebaseDatabase.getInstance().getReference();
+                    databaseDoc2.child("Ponto").orderByChild("id").equalTo(str).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                String str = MapsActivity.InfoSalvas.getString("key");
+                                float tdav = Float.parseFloat(dataSnapshot.child(str).child("TotalAv").getValue().toString());
+                                float vtav = Float.parseFloat(dataSnapshot.child(str).child("SomaAv").getValue().toString());
+                                vtav+=notaDoUser;
+                                tdav+=1;
+                                float media= vtav/tdav;
+                                String mediaS = String.valueOf(media);
+                                String tdavS = String.valueOf(tdav);
+                                String vtavS = String.valueOf(vtav);
+                                salvarNosFavoritos(str);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("TotalAv").setValue(tdavS);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("SomaAv").setValue(vtavS);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("mediaAv").setValue(mediaS);
+
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+
 
 
     }

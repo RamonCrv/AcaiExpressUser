@@ -91,31 +91,21 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         }
 
 
-
-        /*
-        Thread t = new Thread(){
-            @Override
-            public void run() {
-                try{
-                    while (!isInterrupted()){
-                        Thread.sleep(3000);
-                       getActivity().runOnUiThread(new Runnable(){
-                            @Override
-                            public void run() {
-                                mMap.clear();
-                                criarPontos(googleMap);
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-        t.start();
-
-         */
         mMap = googleMap;
         criarPontos(googleMap);
+        DatabaseReference databaseDoc5;
+        databaseDoc5 = FirebaseDatabase.getInstance().getReference();
+        databaseDoc5.child("Ponto").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                googleMap.clear();
+                criarPontos(googleMap);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
