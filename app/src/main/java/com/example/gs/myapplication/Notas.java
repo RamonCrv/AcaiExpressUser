@@ -1,7 +1,5 @@
 package com.example.gs.myapplication;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -43,23 +41,23 @@ public class Notas extends AppCompatActivity {
 
                 switch (smiley) {
                     case SmileRating.BAD:
-                        Toast.makeText(Notas.this, "Ruim!",Toast.LENGTH_SHORT).show();
+
                         notaDoUser = 2;
                         break;
                     case SmileRating.GOOD:
-                        Toast.makeText(Notas.this, "Bom!",Toast.LENGTH_SHORT).show();
+
                         notaDoUser = 4;
                         break;
                     case SmileRating.GREAT:
-                        Toast.makeText(Notas.this, "Excelente!!!",Toast.LENGTH_SHORT).show();
+
                         notaDoUser = 5;
                         break;
                     case SmileRating.OKAY:
-                        Toast.makeText(Notas.this, "Ok!",Toast.LENGTH_SHORT).show();
+
                         notaDoUser = 3;
                         break;
                     case SmileRating.TERRIBLE:
-                        Toast.makeText(Notas.this, "Horrivel!",Toast.LENGTH_SHORT).show();
+
                         notaDoUser = 1;
                         break;
                 }
@@ -102,11 +100,9 @@ public class Notas extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-
                                 String str = MapsActivity.InfoSalvas.getString("key");
-
-                                float tdav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/TotalAv").getValue().toString());
-                                float vtav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/SomaAv").getValue().toString());
+                                float vtav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/somaAv").getValue().toString());
+                                float tdav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/totalAv").getValue().toString());
 
                                int notaAtual = Integer.parseInt(dataSnapshot.child("Usuario/"+auth.getCurrentUser().getUid()+"/PontosAvaliados/"+str+"/Nota").getValue().toString());
 
@@ -118,8 +114,8 @@ public class Notas extends AppCompatActivity {
                                 String tdavS = String.valueOf(tdav);
                                 String vtavS = String.valueOf(vtav);
                                 salvarNosFavoritos(str);
-                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("TotalAv").setValue(tdavS);
-                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("SomaAv").setValue(vtavS);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("totalAv").setValue(tdavS);
+                                FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("somaAv").setValue(vtavS);
                                 FirebaseDatabase.getInstance().getReference().child("Ponto").child(str).child("mediaAv").setValue(mediaS);
 
                             }
@@ -179,6 +175,8 @@ public class Notas extends AppCompatActivity {
         databaseDoc3 = FirebaseDatabase.getInstance().getReference("Usuario");
         databaseDoc3.child(auth.getCurrentUser().getUid()).child("PontosAvaliados").child(idDoPonto).child("Nota").setValue(notaDoUser);
     }
+
+
 
 
 }
