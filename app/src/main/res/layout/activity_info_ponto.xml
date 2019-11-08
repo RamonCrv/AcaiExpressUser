@@ -9,7 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".InfoPonto">
 
-
     <TextView
         android:id="@+id/PontNomeXML"
         android:layout_width="wrap_content"
@@ -136,7 +135,7 @@
         android:id="@+id/btnestar"
         android:layout_width="36dp"
         android:layout_height="38dp"
-        android:background="@drawable/estrelaoff"
+        android:background="@mipmap/estrelaoff_background"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
         app:layout_constraintEnd_toEndOf="@+id/circleImageView"

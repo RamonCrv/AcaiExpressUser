@@ -113,14 +113,14 @@ public class InfoPonto extends AppCompatActivity {
                 if (auth.getCurrentUser() != null){
                     if (eFavorito){
                      Desfavoritar();
-                        btnestar.setBackgroundResource(R.drawable.estrelaoff);
+                        btnestar.setBackgroundResource(R.mipmap.estrelaoff_background);
                         eFavorito = !eFavorito;
                     }else{
                         salvarNosFavoritos();
                         Toast.makeText(InfoPonto.this, "Posto Favoritado",
                                 Toast.LENGTH_SHORT).show();
                         eFavorito = !eFavorito;
-                        btnestar.setBackgroundResource(R.drawable.estrelaon);
+                        btnestar.setBackgroundResource(R.mipmap.estrelaon_background);
                     }
                 }else {
                     Toast.makeText(InfoPonto.this, "É necessario estar logado para favoritar",
@@ -198,7 +198,7 @@ public class InfoPonto extends AppCompatActivity {
  public void verificarFavoritos(){
         String str = MapsActivity.InfoSalvas.getString("key");
         eFavorito = false;
-        btnestar.setBackgroundResource(R.drawable.estrelaoff);
+        btnestar.setBackgroundResource(R.mipmap.estrelaoff_background);
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Usuario/"+auth.getCurrentUser().getUid()+"/Favorito/"+str);
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -207,7 +207,7 @@ public class InfoPonto extends AppCompatActivity {
                 //These are all of your children.
                if (dataSnapshot.exists()){
                    eFavorito = true;
-                   btnestar.setBackgroundResource(R.drawable.estrelaon);
+                   btnestar.setBackgroundResource(R.mipmap.estrelaon_background);
                }
 
             }
