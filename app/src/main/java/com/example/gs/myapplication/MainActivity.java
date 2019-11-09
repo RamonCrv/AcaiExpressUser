@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color1));
+        Intent i = new Intent(this, Carregando.class);
 
+        startActivity(i);
         setNavigationViewListener();
 
         auth = FirebaseAuth.getInstance();

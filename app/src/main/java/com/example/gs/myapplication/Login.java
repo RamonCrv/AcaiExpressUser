@@ -46,7 +46,6 @@ public class Login extends AppCompatActivity {
         startActivity(i);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent i = new Intent(Login.this, One.class);
@@ -59,12 +58,10 @@ public class Login extends AppCompatActivity {
         eventoClicks();
 
         mAuth = FirebaseAuth.getInstance();
-        //  FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference("scores");
         scoresRef.keepSynced(true);
 
     }
-
 
     //EVENTOS DE BOTÕES
     private void eventoClicks() {
@@ -99,10 +96,7 @@ public class Login extends AppCompatActivity {
         });
 
 
-
-
     }
-
 
     //FAZ O LOGIN TRADICIONAL
     private void login(String email, String senha) {
