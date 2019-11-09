@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -74,6 +75,11 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
+
+
+
+
+
 
         /*initMapFragment();
        // initComponent();
@@ -163,6 +169,20 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         }
 
 
+
+        if (mapView != null &&
+                mapView.findViewById(Integer.parseInt("1")) != null) {
+            // Get the button view
+            View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+            // and next place it, on bottom right (as Google Maps app)
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+                    locationButton.getLayoutParams();
+            // position on right bottom
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParams.setMargins(0, 0, 30, 30);
+
+        }
         mMap = googleMap;
         criarPontos(googleMap);
         DatabaseReference databaseDoc5;
@@ -180,23 +200,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         });
 
 
-
-
-
-        if (mapView != null  &&
-                mapView.findViewById(Integer.parseInt("1")) != null) {
-            // Get the button view
-            View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
-            locationButton.setVisibility(View.GONE);
-            // and next place it, on bottom right (as Google Maps app)
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)locationButton.getLayoutParams();
-            // position on right bottom
-
-            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
-            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            layoutParams.setMargins(0, 0, 180, 180);
-
-        }
 
         LatLng latLng = new LatLng(0.025921, -51.068596);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.8f));

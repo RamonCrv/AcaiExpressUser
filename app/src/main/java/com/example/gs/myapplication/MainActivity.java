@@ -28,19 +28,15 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     private FragmentManager fragmentManager;
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth auth;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color1));
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent i = new Intent(this, Carregando.class);
-
         startActivity(i);
         setNavigationViewListener();
-
         auth = FirebaseAuth.getInstance();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -52,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.nav_host_fragment, new MapsActivity(),"Maps fragiment" );
         transaction.commitAllowingStateLoss();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
 

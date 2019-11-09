@@ -37,6 +37,7 @@ public class MainFragment extends Fragment implements MyCustomDialog.OnInputSele
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
         mOpenDialog = view.findViewById(R.id.open_dialog);
         mInputDisplay = view.findViewById(R.id.input_display);
         mOpenDialog.setOnClickListener(new View.OnClickListener() {
