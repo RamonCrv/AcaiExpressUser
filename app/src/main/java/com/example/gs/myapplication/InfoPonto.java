@@ -209,7 +209,6 @@ public class InfoPonto extends AppCompatActivity {
                    eFavorito = true;
                    btnestar.setBackgroundResource(R.mipmap.estrelaon_background);
                }
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -218,10 +217,6 @@ public class InfoPonto extends AppCompatActivity {
         });
 
     }
-
-
-
-
 
 
 }
