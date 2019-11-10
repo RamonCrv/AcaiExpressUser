@@ -94,8 +94,11 @@
             app:layout_constraintStart_toStartOf="@+id/btLogar"
             app:layout_constraintTop_toBottomOf="@+id/btLogar"
             app:layout_constraintVertical_bias="0.214" />
-
-
+<com.google.android.gms.common.SignInButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:layout_gravity="center"/>
     </LinearLayout>
 </ScrollView>
 </FrameLayout>
