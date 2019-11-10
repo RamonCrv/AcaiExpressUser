@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -73,20 +74,54 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+    public void singOut(){
+        FirebaseAuth.getInstance().signOut();
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
-        if (id == R.id.nav_Lista_de_Favoritos){
-            if (auth.getCurrentUser() != null){
+        if (id == R.id.nav_Lista_de_Favoritos) {
+            if (auth.getCurrentUser() != null) {
                 Intent b = new Intent(this.getBaseContext(), Lista.class);
                 startActivity(b);
+                if(auth.getCurrentUser() != null){
+                    }
+                }else{
+                Toast.makeText(this.getBaseContext(), "É necessario estar logado para acessar a lista de favoritos",
+                        Toast.LENGTH_SHORT).show();
+            }
+            } else if (id == R.id.nav_sair){
+            if(auth.getCurrentUser() != null){
+                Intent g = new Intent(this, Login.class);
+                startActivity(g);
+                singOut();
+            }
+            if(auth.getCurrentUser() != null){
             }else{
-                Toast.makeText(this.getBaseContext(),"É necessario estar logado para acessar a lista de favoritos",
+                Toast.makeText(this.getBaseContext(), "É necessario estar logado para Sair",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            }else if (id == R.id.nav_sobre){
+
+
+             }else if (id == R.id.nav_config){
+            if(auth.getCurrentUser() != null){
+            }else{
+                Toast.makeText(this.getBaseContext(), "É necessario estar logado para confirurar conta",
                         Toast.LENGTH_SHORT).show();
             }
 
         }
-        return true;
+            DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+
+        }
+       // return true;
     }
-}
+
+
+
+

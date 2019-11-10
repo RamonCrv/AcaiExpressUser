@@ -109,15 +109,11 @@ public class Lista extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 String idS = String.valueOf(id);
                 int idInt = Integer.parseInt(idS);
-
                 MapsActivity.InfoSalvas.putString("key",  arrayList.get(idInt).getIdPt());
-
                 Intent i = new Intent(Lista.this, InfoPonto.class);
                 startActivity(i);
             }
         });
-
-
 
 
         arrayAdapter.notifyDataSetChanged();
@@ -140,9 +136,6 @@ public class Lista extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     String teste = postSnapshot.getKey();
-
-
-
                     DatabaseReference mDatabase2;
                     mDatabase2 = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference  pontoRef2 = mDatabase2.child("Ponto").child(teste);

@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -86,6 +87,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
       Toast.makeText(this, "Swipe up bottom sheet", Toast.LENGTH_SHORT).show();
  */
     }
+
 /*
     private void initComponent() {
         // get the bottom sheet view
