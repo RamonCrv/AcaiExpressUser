@@ -20,7 +20,6 @@
             android:id="@+id/nav_sobre"
             android:icon="@drawable/ic_menu_send"
             android:title="@string/menu_send" />
-
         <item
             android:id="@+id/nav_sair"
             android:icon="@drawable/sair"
