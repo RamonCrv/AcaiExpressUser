@@ -1,7 +1,10 @@
 package com.example.gs.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -80,7 +83,11 @@ public class Notas extends AppCompatActivity {
         avaliar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addAv();
+                alert("Obrigado por avaliar");
+                Intent i = new Intent(Notas.this, InfoPonto.class);
+                startActivity(i);
             }
         });
     }
@@ -175,6 +182,14 @@ public class Notas extends AppCompatActivity {
         databaseDoc3 = FirebaseDatabase.getInstance().getReference("Usuario");
         databaseDoc3.child(auth.getCurrentUser().getUid()).child("PontosAvaliados").child(idDoPonto).child("Nota").setValue(notaDoUser);
     }
+
+    private  void alert (String msg){
+        final Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0,0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        Toast.makeText(Notas.this,msg,Toast.LENGTH_SHORT).show();
+    }
+
 
 
 

@@ -226,16 +226,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-        mMap.setMinZoomPreference(12);
-        CircleOptions circleOptions = new CircleOptions();
-        circleOptions.center(new LatLng(location.getLatitude(),
-                location.getLongitude()));
-
-        circleOptions.radius(200);
-        circleOptions.fillColor(Color.RED);
-        circleOptions.strokeWidth(6);
-
-        mMap.addCircle(circleOptions);
 
     }
 
