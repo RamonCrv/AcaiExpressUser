@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -52,6 +53,7 @@ public class InfoPonto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ponto);
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color3));
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent b = new Intent(InfoPonto.this, Carregando.class);
         startActivity(b);
         inicializarComponentes();
