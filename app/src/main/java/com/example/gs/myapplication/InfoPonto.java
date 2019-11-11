@@ -1,5 +1,6 @@
 package com.example.gs.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -37,6 +38,7 @@ public class InfoPonto extends AppCompatActivity {
     private ImageButton btnestar;
     private ImageView ImagemDoPonto;
     private TextView nomeDoPonto;
+    private TextView mednota;
     private TextView StatusDoPonto;
     private TextView PrecoDoPonto;
     public String idDoPonto;
@@ -136,6 +138,7 @@ public class InfoPonto extends AppCompatActivity {
     void inicializarComponentes(){
         btnComent =(findViewById(R.id.button20));
         ImagemDoPonto= (findViewById(R.id.ImgPt));
+        mednota = (findViewById(R.id.mednota));
         nomeDoPonto  = (findViewById(R.id.PontNomeXML));
         StatusDoPonto =  (findViewById(R.id.StatusXML));
         PrecoDoPonto = (findViewById(R.id.precoXML));
@@ -173,11 +176,13 @@ public class InfoPonto extends AppCompatActivity {
                     String str = MapsActivity.InfoSalvas.getString("key");
                     idDoPonto = str;
                     nomeDoPonto.setText(dataSnapshot.child(str).child("nome").getValue().toString());
+                     mednota.setText(dataSnapshot.child(str).child("mediaAv").getValue().toString());
                     PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString()+"/L");
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
 
                 }else {
-
+                    Toast.makeText(InfoPonto.this, "erro ao carregar dados",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

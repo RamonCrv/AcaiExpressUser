@@ -61,9 +61,6 @@ public class Lista extends AppCompatActivity {
         arrayList = new ArrayList<>();
         listView =(ListView) findViewById(R.id.listView);
 
-
-
-
         arrayAdapter = new ArrayAdapter(this, R.layout.adapter_favorito, R.id.localname,arrayList) {
 
             @Override
@@ -83,15 +80,17 @@ public class Lista extends AppCompatActivity {
                 return view;
             }
         };
+
+
         //lista();
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
-
         databaseDoc5.child("Ponto").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 arrayList.clear();
                 lista();
+
 
             }
             @Override
@@ -123,7 +122,13 @@ public class Lista extends AppCompatActivity {
 
     }
 
+
     void lista (){
+
+
+
+
+
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference  pontoRef = mDatabase.child("Usuario").child(auth.getCurrentUser().getUid()).child("Favorito");
@@ -145,6 +150,10 @@ public class Lista extends AppCompatActivity {
 
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+
 
                             String latP = dataSnapshot.child("latiT").getValue().toString();
                             String longP = dataSnapshot.child("longT").getValue().toString();
@@ -170,6 +179,7 @@ public class Lista extends AppCompatActivity {
                                 }
 
                             }
+
 
                             float results []= new float[10];
                             Location.distanceBetween(lat, longi, LatPDb, LongPDb, results);
