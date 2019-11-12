@@ -82,7 +82,7 @@
             android:gravity="center|left"
             android:text="Nt"
             android:textColor="#FFC107"
-            android:textSize="36sp" />
+            android:textSize="32sp" />
     </LinearLayout>
 
 
