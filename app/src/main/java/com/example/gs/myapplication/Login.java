@@ -53,7 +53,6 @@ public class Login extends AppCompatActivity {
             UsuarioLogado();
 
         }
-
     }
 
     private void UsuarioLogado() {

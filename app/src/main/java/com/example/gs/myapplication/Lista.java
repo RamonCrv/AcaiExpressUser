@@ -113,6 +113,7 @@ public class Lista extends AppCompatActivity {
                 MapsActivity.InfoSalvas.putString("key",  arrayList.get(idInt).getIdPt());
                 Intent i = new Intent(Lista.this, InfoPonto.class);
                 startActivity(i);
+                finish();
             }
         });
 
