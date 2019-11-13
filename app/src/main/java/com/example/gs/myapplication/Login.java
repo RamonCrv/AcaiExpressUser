@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -26,6 +27,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +37,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
-
+    private static final String TAG = "GoogleActivity";
+    private static final int RC_SIGN_IN = 9001;
     private Button btnRegistrar;
     private Button btnLogar;
     private Button btnPular;
@@ -49,6 +52,7 @@ public class Login extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
+       // updateUI(currentUser);
         if(currentUser != null){
             UsuarioLogado();
 
@@ -64,7 +68,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Intent i = new Intent(Login.this, One.class);
         startActivity(i);
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color2));
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -77,15 +80,18 @@ public class Login extends AppCompatActivity {
         scoresRef.keepSynced(true);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         googleSignInClientt = GoogleSignIn.getClient(this,gso);
+        mAuth = FirebaseAuth.getInstance();
+
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = googleSignInClientt.getSignInIntent();
-                startActivityForResult(signInIntent,5);
+                startActivityForResult(signInIntent,RC_SIGN_IN);
             }
         });
 
@@ -96,7 +102,7 @@ public class Login extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == 5) {
+        if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
@@ -104,13 +110,15 @@ public class Login extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                alert("Erro1");
+
+                Log.w(TAG, "Google sign in failed", e);
                 // ...
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -121,13 +129,15 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             alert("Erro2");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Log.d(TAG, "signInWithCredential:success");
                             Intent i = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(i);
                             finish();
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            alert("Erro3");
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            //Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                         }
 
                     }
@@ -172,6 +182,8 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
 
     //FAZ O LOGIN TRADICIONAL
     private void login(String email, String senha) {

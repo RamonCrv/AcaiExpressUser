@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 29
@@ -12,6 +13,11 @@ android {
         versionName '3.0'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testFunctionalTest = true
+        testOptions {
+            unitTests {
+                includeAndroidResources = true
+            }
+        }
     }
 }
 
@@ -21,6 +27,7 @@ dependencies {
     implementation 'com.github.sujithkanna:smileyrating:1.6.8'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.firebaseui:firebase-ui-storage:3.2.2'
@@ -43,6 +50,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.firebaseui:firebase-ui-storage:3.2.2'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.google.firebase:firebase-analytics:17.2.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     implementation 'com.balysv:material-ripple:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

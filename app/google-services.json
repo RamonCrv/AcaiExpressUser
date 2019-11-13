@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "624854898555-s5a4no88tvg150858fh83429hucid8u0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gs.acaiexpress",
+            "certificate_hash": "e5d45546024bb005d72be433ab535e1678336b25"
+          }
+        },
+        {
           "client_id": "624854898555-ercm5id1vbh6q9knspi7lfs2bshu33m7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -37,7 +45,13 @@
       ],
       "api_key": [
         {
+          "current_key": "AIzaSyAytVkK9tGwvxyIpNZQrQeg6qMnoyoQVR0"
+        },
+        {
           "current_key": "AIzaSyAJQnCXOIK_EgozDbOEOuiZ4tnC3ldhK5E"
+        },
+        {
+          "current_key": "AIzaSyDl1SHVsvIhz0dzvr9Edy_T6dRKwD5izkE"
         }
       ],
       "services": {
@@ -74,7 +88,13 @@
       ],
       "api_key": [
         {
+          "current_key": "AIzaSyAytVkK9tGwvxyIpNZQrQeg6qMnoyoQVR0"
+        },
+        {
           "current_key": "AIzaSyAJQnCXOIK_EgozDbOEOuiZ4tnC3ldhK5E"
+        },
+        {
+          "current_key": "AIzaSyDl1SHVsvIhz0dzvr9Edy_T6dRKwD5izkE"
         }
       ],
       "services": {
@@ -90,6 +110,4 @@
     }
   ],
   "configuration_version": "1"
-
-
 }
