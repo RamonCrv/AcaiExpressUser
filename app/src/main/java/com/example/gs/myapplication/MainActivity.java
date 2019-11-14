@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.nav_host_fragment, new MapsActivity(),"Maps fragiment" );
         transaction.commitAllowingStateLoss();
+
     }
 
     @Override
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             if (auth.getCurrentUser() != null) {
                 Intent b = new Intent(this.getBaseContext(), Lista.class);
                 startActivity(b);
+
                 if(auth.getCurrentUser() != null){
                     }
                 }else{
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
                 Intent g = new Intent(this, Login.class);
                 startActivity(g);
                 singOut();
+                finish();
             }
             if(auth.getCurrentUser() == null){
 

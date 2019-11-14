@@ -131,6 +131,7 @@ public class InfoPonto extends AppCompatActivity {
                 }
 
 
+
             }
         });
 
@@ -197,7 +198,9 @@ public class InfoPonto extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 url = uri.toString();
                 glide(url,ImagemDoPonto);
+
             }
+
 
         });
     }

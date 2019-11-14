@@ -68,6 +68,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         getMapAsync(this);
 
+
     }
 
 
@@ -92,6 +93,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             }
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style. Error: ", e);
+
         }
 
 
@@ -203,6 +205,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                 Intent i = new Intent(getActivity(),InfoPonto.class);
                startActivity(i);
                 return true;
+
             }
         });
 

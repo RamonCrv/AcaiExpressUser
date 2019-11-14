@@ -58,6 +58,7 @@ public class Login extends AppCompatActivity {
     private void UsuarioLogado() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     @Override

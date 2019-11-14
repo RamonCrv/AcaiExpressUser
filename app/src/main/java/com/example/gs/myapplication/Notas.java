@@ -23,6 +23,7 @@ public class Notas extends AppCompatActivity {
     DatabaseReference databaseDoc;
     Button avaliar;
     FirebaseAuth auth;
+    FirebaseDatabase firebaseDatabase;
     float notaDoUser;
 
     @Override
@@ -37,6 +38,7 @@ public class Notas extends AppCompatActivity {
         smileRating.setNameForSmile(BaseRating.GREAT,"Excelente") ;
         smileRating.setNameForSmile(BaseRating.OKAY,"OK") ;
         smileRating.setNameForSmile(BaseRating.TERRIBLE,"Horrivel") ;
+
 
         smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
             @Override
@@ -73,8 +75,6 @@ public class Notas extends AppCompatActivity {
             }
         });
         clicks();
-
-
 
     }
 
