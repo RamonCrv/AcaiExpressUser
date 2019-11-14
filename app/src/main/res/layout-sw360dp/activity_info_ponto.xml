@@ -66,7 +66,7 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ImgPt" />
 
@@ -115,19 +115,19 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="72dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="188dp"
+        android:layout_width="52dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="200dp"
         android:src="@color/color3"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML" />
 
     <ImageButton
         android:id="@+id/btnestar"
-        android:layout_width="36dp"
-        android:layout_height="38dp"
+        android:layout_width="24dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@mipmap/estrelaoff_background"
         android:visibility="visible"
@@ -144,7 +144,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/star2"
         android:textColor="#FFEB3B"
-        android:textSize="56sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -159,7 +159,7 @@
         android:layout_marginRight="10dp"
         android:text="Preço:"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/precoXML"
         app:layout_constraintEnd_toStartOf="@+id/precoXML"
@@ -175,7 +175,7 @@
         android:layout_marginRight="10dp"
         android:text="Status:"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/StatusXML"
         app:layout_constraintEnd_toStartOf="@+id/StatusXML"

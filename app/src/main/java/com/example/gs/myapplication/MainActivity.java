@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color1));
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent i = new Intent(this, Carregando.class);
         startActivity(i);
@@ -50,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         transaction.add(R.id.nav_host_fragment, new MapsActivity(),"Maps fragiment" );
         transaction.commitAllowingStateLoss();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -97,7 +94,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
                 startActivity(g);
                 singOut();
             }
-            if(auth.getCurrentUser() != null){
+            if(auth.getCurrentUser() == null){
+
             }else{
                 Toast.makeText(this.getBaseContext(), "É necessario estar logado para Sair",
                         Toast.LENGTH_SHORT).show();
@@ -117,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
-
         }
        // return true;
     }
