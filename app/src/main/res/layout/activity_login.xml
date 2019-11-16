@@ -11,10 +11,9 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:orientation="vertical">
         <Button
@@ -24,7 +23,7 @@
             android:layout_marginTop="40dp"
             android:layout_gravity="end"
             android:background="@drawable/btn1"
-            android:text="Criar Conta"
+            android:text="@string/Text_criar_conta"
             android:textAllCaps="false"
             android:textColor="#66f9B0"
             android:textSize="18sp"
@@ -35,13 +34,14 @@
             android:id="@+id/editEmail"
             android:layout_width="271dp"
             android:layout_height="46dp"
-            android:background="@drawable/texts"
-            android:layout_marginTop="120dp"
-            android:drawableLeft="@drawable/save1"
-            android:ems="10"
             android:layout_gravity="center"
-            android:hint=" Email:"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/texts"
+            android:drawableStart="@drawable/save1"
+            android:ems="10"
+            android:hint="@string/Text_Email"
             android:inputType="textEmailAddress"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/editSenha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.551"
@@ -54,19 +54,19 @@
             android:layout_height="46dp"
             android:background="@drawable/texts"
             android:layout_marginTop="20dp"
-            android:drawableLeft="@drawable/usar"
+            android:drawableStart="@drawable/usar"
+            android:textColorHint="#FFFFFF"
             android:ems="10"
-            android:hint=" Senha:"
+            android:hint="@string/Text_Senha"
             android:layout_gravity="center"
-            android:inputType="textPassword"
-          />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btLogar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn1"
-            android:text="Entrar"
+            android:text="@string/Entrar"
             android:textColor="#66f9B0"
             android:layout_marginTop="40dp"
             android:textSize="16sp"
@@ -85,9 +85,9 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:background="@drawable/btsemborda"
-            android:text="Entrar sem login"
+            android:text="@string/Entrar_sem_logar"
             android:textColor="#93ECE8"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btLogar"
             app:layout_constraintHorizontal_bias="0.488"
@@ -100,9 +100,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="40dp"
     android:layout_gravity="center"/>
-
-
-
     </LinearLayout>
 </ScrollView>
 </FrameLayout>
