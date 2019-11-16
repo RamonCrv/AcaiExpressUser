@@ -34,7 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
     private static final String TAG = "GoogleActivity";
-    private static final int RC_SIGN_IN = 9001;
+    private static final int RC_SIGN_IN = 5;
     private Button btnRegistrar;
     private Button btnLogar;
     private Button btnPular;
@@ -46,8 +46,8 @@ public class Login extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
- Intent i = new Intent(Login.this, One.class);
-         startActivity(i);
+ //Intent i = new Intent(Login.this, One.class);
+   //      startActivity(i);
         FirebaseUser currentUser = mAuth.getCurrentUser();
        // updateUI(currentUser);
         if(currentUser != null){
@@ -69,19 +69,13 @@ public class Login extends AppCompatActivity {
         inicializarComponentes();
         pedirPermissao();
         eventoClicks();
-
         mAuth = FirebaseAuth.getInstance();
         DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference("scores");
         scoresRef.keepSynced(true);
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
+        //Google SingIn
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
         googleSignInClientt = GoogleSignIn.getClient(this,gso);
         mAuth = FirebaseAuth.getInstance();
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +83,6 @@ public class Login extends AppCompatActivity {
                 startActivityForResult(signInIntent,RC_SIGN_IN);
             }
         });
-
     }
 
     @Override
@@ -137,7 +130,6 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-
     //EVENTOS DE BOTÕES
     private void eventoClicks() {
 
@@ -148,6 +140,7 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,9 +163,6 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     //FAZ O LOGIN TRADICIONAL
@@ -211,6 +201,7 @@ public class Login extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER_VERTICAL, 0,0);
         toast.setDuration(Toast.LENGTH_SHORT);
         Toast.makeText(Login.this,msg,Toast.LENGTH_SHORT).show();
+
     }
 
     boolean pedirPermissao(){
@@ -221,6 +212,7 @@ public class Login extends AppCompatActivity {
                 return false;
 
             }else {
+                //finish();
 
                 return true;
             }

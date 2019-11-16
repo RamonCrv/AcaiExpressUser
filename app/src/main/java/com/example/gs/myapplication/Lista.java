@@ -186,13 +186,12 @@ public class Lista extends AppCompatActivity {
                             Location.distanceBetween(lat, longi, LatPDb, LongPDb, results);
                             float distanciaEmKm = results[0]/1000;
 
-
                             String nomeDoPt = dataSnapshot.child("nome").getValue().toString();
                             String preso = dataSnapshot.child("preso").getValue().toString();
                             String aberto = dataSnapshot.child("aberto").getValue().toString();
                             String idDoPT = dataSnapshot.child("id").getValue().toString();
                             String mednota = dataSnapshot.child("mediaAv").getValue().toString();
-                            arrayList.add(new Person(nomeDoPt,aberto,"R$"+preso,df2.format(distanciaEmKm)+" Km", idDoPT,mednota));
+                            arrayList.add(new Person(nomeDoPt,aberto,"R$:"+preso,df2.format(distanciaEmKm)+" Km", idDoPT,mednota));
                             arrayAdapter.notifyDataSetChanged();
                             listView.setAdapter((arrayAdapter));
 
