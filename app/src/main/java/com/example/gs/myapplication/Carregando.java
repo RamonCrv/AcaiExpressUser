@@ -26,8 +26,8 @@ public class Carregando extends AppCompatActivity {
             @Override
             public void run() {
                 progressBar.setVisibility(View.GONE);
-                //  Intent i = new Intent(Um.this,MainActivity.class);
-                //  startActivity(i);
+                Intent i = new Intent(Carregando.this, MainActivity.class);
+                startActivity(i);
                 finish();
             }
         },2000);

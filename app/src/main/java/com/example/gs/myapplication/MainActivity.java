@@ -52,13 +52,10 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         inicialziarComponentes();
         BuscarImg();
         pegarNome();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        Intent i = new Intent(this, Carregando.class);
-        startActivity(i);
         setNavigationViewListener();
         auth = FirebaseAuth.getInstance();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -133,7 +130,9 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
 
 
              }else if (id == R.id.nav_config){
-
+            Intent h = new Intent(this, userConfig2.class);
+            startActivity(h);
+            finish();
 
             if(auth.getCurrentUser() != null) {
                 Intent g = new Intent(this, userConfig2.class);
