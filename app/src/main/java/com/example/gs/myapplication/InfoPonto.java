@@ -249,7 +249,7 @@ public class InfoPonto extends AppCompatActivity {
  public void verificarFavoritos(){
         String str = MapsActivity.InfoSalvas.getString("key");
         eFavorito = false;
-        btnestar.setBackgroundResource(R.mipmap.estrelaoff_background);
+        btnestar.setBackgroundResource(R.mipmap.coracaooff_background);
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Usuario/"+auth.getCurrentUser().getUid()+"/Favorito/"+str);
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -258,7 +258,7 @@ public class InfoPonto extends AppCompatActivity {
                 //These are all of your children.
                if (dataSnapshot.exists()){
                    eFavorito = true;
-                   btnestar.setBackgroundResource(R.mipmap.estrelaon_background);
+                   btnestar.setBackgroundResource(R.mipmap.coracaoon_background);
                }
             }
             @Override

@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text=""
+        android:layout_marginTop="35dp"
         android:textColor="#FFC107"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ImgPt"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,14 +28,14 @@
     <ImageView
         android:id="@+id/ImgPt"
         android:layout_width="392dp"
-        android:layout_height="231dp"
+        android:layout_height="300dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126"
+        app:layout_constraintVertical_bias="0.149"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -82,13 +83,14 @@
         app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/button2"
         app:layout_constraintVertical_bias="0.516" />
+
     <TextView
         android:id="@+id/data"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:gravity="start"
         android:textColor="#E92C2828"
-        android:textSize="18sp"
+        android:textSize="13sp"
         android:textStyle="italic|bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,10 +134,10 @@
         android:id="@+id/circleImageView"
         android:layout_width="68dp"
         android:layout_height="69dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="264dp"
         android:src="@color/color3"
         app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="@+id/ImgPt"
         app:layout_constraintTop_toBottomOf="@+id/PontNomeXML" />
 
@@ -144,7 +146,7 @@
         android:layout_width="31dp"
         android:layout_height="37dp"
         android:layout_gravity="center"
-        android:background="@mipmap/estrelaoff_background"
+        android:background="@mipmap/coracaooff_background"
         android:visibility="visible"
 
         app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
