@@ -1,5 +1,6 @@
 package com.example.gs.myapplication;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,33 +13,56 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager fragmentManager;
     private AppBarConfiguration mAppBarConfiguration;
+    private Uri mUri;
+    private String url;
     FirebaseAuth auth;
+    private TextView nomeUser;
+    private CircleImageView imgUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        inicialziarComponentes();
+        BuscarImg();
+        pegarNome();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent i = new Intent(this, Carregando.class);
         startActivity(i);
         setNavigationViewListener();
         auth = FirebaseAuth.getInstance();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send)
@@ -108,7 +132,11 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
 
 
              }else if (id == R.id.nav_config){
-            if(auth.getCurrentUser() != null){
+
+
+            if(auth.getCurrentUser() != null) {
+                Intent g = new Intent(this, userConfig2.class);
+                startActivity(g);
             }else{
                 Toast.makeText(this.getBaseContext(), "É necessario estar logado para confirurar conta",
                         Toast.LENGTH_SHORT).show();
@@ -119,6 +147,52 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
+
+    public void BuscarImg(){
+        FirebaseAuth auth2 = FirebaseAuth.getInstance();
+        final String userID = auth2.getCurrentUser().getUid();
+        final StorageReference ref = FirebaseStorage.getInstance().getReference().child("/Imagens/Usuario/").child(userID);
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                url = uri.toString();
+                Toast.makeText(MainActivity.this, url,
+                        Toast.LENGTH_SHORT).show();
+               glide(url, imgUser);
+            }
+
+        });
+    }
+
+    public void glide(String url, CircleImageView imagem){
+        Glide.with(this).load(url).into(imagem);
+    }
+
+    void inicialziarComponentes(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        imgUser =  headerView.findViewById(R.id.ImgUserConf);
+        nomeUser = headerView.findViewById(R.id.nomeUserConf);
+    }
+
+    void pegarNome(){
+        final DatabaseReference databaseDoc5;
+        databaseDoc5 = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+
+        databaseDoc5.child("Usuario/"+auth.getCurrentUser().getUid()+"/Nome").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    nomeUser.setText(dataSnapshot.getValue().toString());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
        // return true;
     }
 

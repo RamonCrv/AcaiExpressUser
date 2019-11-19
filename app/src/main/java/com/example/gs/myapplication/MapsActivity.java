@@ -10,16 +10,19 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,6 +36,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,12 +49,18 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 import com.example.gs.myapplication.utils.Tools;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.Timer;
 import java.util.TimerTask;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener  {
     public MapView mapView;
     public GoogleMap mMap;
+
 
 
     public TextView mInputDisplay;
@@ -67,7 +77,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-
 
     }
 
@@ -113,8 +122,11 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         }
         mMap = googleMap;
         criarPontos(googleMap);
+
+        //ATUALIZA OS PONTOS EM TEMPO REAL.
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
+
         databaseDoc5.child("Ponto").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -127,15 +139,14 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             }
         });
 
-
-
         LatLng latLng = new LatLng(0.025921, -51.068596);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.8f));
         mMap.setTrafficEnabled(false);
-
         mMap.setMinZoomPreference(10.0f);
         mMap.setMaxZoomPreference(17.5f);
+        mMap.setIndoorEnabled(true);
+        mMap.getFocusedBuilding();
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         mMap.setMyLocationEnabled(true);
@@ -218,6 +229,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         for(int i=0;i<sizeOfRandomString;++i)
             sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
         return sb.toString();
+    }
+
+    void porImgDoUser(){
+
     }
 
 

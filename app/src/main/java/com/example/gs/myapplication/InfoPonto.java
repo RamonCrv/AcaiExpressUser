@@ -60,22 +60,20 @@ public class InfoPonto extends AppCompatActivity {
 
     private Location location;
     private LocationManager locationManager;
-    private Double latUser;
-    private Double longUser;
+    private String latUser;
+    private String longUser;
 
 
 
     private float  LatDoPonto;
     private String latDoPonto;
-    private Double  longDoPonto;
+    private String longDoPonto;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ponto);
-
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.color3));
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent b = new Intent(InfoPonto.this, Carregando.class);
         startActivity(b);
@@ -277,7 +275,7 @@ public class InfoPonto extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    LatDoPonto = Float.parseFloat(dataSnapshot.getValue().toString());
+                    //LatDoPonto = Float.parseFloat(dataSnapshot.getValue().toString());
                     latDoPonto = dataSnapshot.getValue().toString();
                 }
 
@@ -295,7 +293,8 @@ public class InfoPonto extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    longDoPonto = Double.parseDouble(dataSnapshot.getValue().toString());
+                    //longDoPonto = Double.parseDouble(dataSnapshot.getValue().toString());
+                    longDoPonto = dataSnapshot.getValue().toString();
                 }
 
             }
@@ -310,8 +309,10 @@ public class InfoPonto extends AppCompatActivity {
             location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
         if (location!= null){
-            latUser = location.getLatitude();
-            longUser = location.getLongitude();
+            latUser = String.valueOf(location.getLatitude());
+            //latUser = location.getLatitude();
+            longUser = String.valueOf(location.getLongitude());
+            //longUser = location.getLongitude();
 
         }
 

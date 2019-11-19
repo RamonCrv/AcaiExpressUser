@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gs.myapplication.userConfig2"
+    android:orientation="vertical">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/logosemfundo"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp" />
+
+    <Button
+        android:id="@+id/tbEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="-30dp"
+        android:layout_gravity="start|center"
+        android:background="@drawable/btn1"
+        android:drawableStart="@drawable/edite"
+        android:stateListAnimator="@drawable/btn1"
+        android:text="Edite">
+
+    </Button>
+
+    <EditText
+        android:id="@+id/nomeUserConf"
+        android:layout_width="318dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="50dp"
+        android:inputType="text"
+        android:hint="@string/Text_user_name"/>
+
+
+    <Button
+        android:id="@+id/btSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:background="@drawable/btn1"
+        android:text="Salvar/Atualizar" />
+</LinearLayout>
+
+
+
+
+
+
+

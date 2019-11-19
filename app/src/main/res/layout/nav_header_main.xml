@@ -5,7 +5,6 @@
     android:layout_height="@dimen/nav_header_height"
     android:background="#fa0d"
     android:gravity="bottom"
-    android:backgroundTint="#673AB7"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -15,9 +14,11 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
 
-        android:layout_width="101dp"
-        android:layout_height="94dp"
+        android:id="@+id/ImgUserConf"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
         android:layout_marginTop="4dp"
+        android:layout_marginStart="25dp"
         android:src="@mipmap/logosemfundo"
         app:civ_border_color="#FFFFFF"
         app:civ_border_width="2dp"
@@ -29,10 +30,15 @@
         app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:id="@+id/nomeUserConf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="0dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/Text_user_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
