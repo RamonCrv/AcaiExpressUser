@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Custom Dialog Heading"
+            android:text="@string/action_settings"
             android:textSize="18sp"
             android:textColor="#000"
             android:id="@+id/heading"/>
@@ -28,13 +28,13 @@
             android:layout_marginTop="20dp"
             android:background="@null"
             android:textColor="#000"
-            android:hint="enter some text..."
+            android:hint="@string/gcm_defaultSenderId"
             android:id="@+id/input"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK"
+            android:text="@string/smile_rating_okay"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CANCEL"
+            android:text="@string/fab_transformation_scrim_behavior"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="20dp"

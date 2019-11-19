@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:theme="@style/AppTheme.Custom"
     android:layout_width="match_parent"
@@ -10,32 +9,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <include layout="@layout/content_main" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <!-- Content -->
-
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottomSheet"
-        style="@style/Widget.MaterialComponents.BottomSheet.Modal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:behavior_peekHeight="86dp"
-        app:cardBackgroundColor="#eee"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="8dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-
-
-
-    </com.google.android.material.card.MaterialCardView>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

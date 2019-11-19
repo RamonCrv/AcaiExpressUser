@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="Configuração da conta"
+        android:text="@string/config_conta"
         android:textColor="#FFFFFF"
         android:textSize="42sp"
         android:textStyle="bold" />
@@ -41,7 +41,7 @@
         android:background="@drawable/btn1"
         android:drawableStart="@drawable/edite"
         android:stateListAnimator="@drawable/btn1"
-        android:text="Edite"
+        android:text="@string/editi"
         android:textColor="#FFFFFF">
 
     </Button>
@@ -68,7 +68,7 @@
         android:layout_gravity="center"
         android:textSize="24sp"
         android:background="@drawable/texts"
-        android:text="Salvar/Atualizar"
+        android:text="@string/salvar_atualizar"
         android:textColor="#FFFFFF" />
 </LinearLayout>
 

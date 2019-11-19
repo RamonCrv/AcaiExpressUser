@@ -2,7 +2,7 @@
     <string name="app_name">Açaí Express</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">username</string>
+    <string name="nav_header_title"> </string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -11,6 +11,11 @@
     <string name="Preço">Preço</string>
     <string name="nome_do_local">Nome do local</string>
     <string name="Aberto">status</string>
+    <string name="Text_faroritos">Favoritos</string>
+    <string name="sair">Sair</string>
+    <string name="editi">Edite</string>
+    <string name="Text_enviar">Enviar</string>
+    <string name="salvar_atualizar">Salvar/Atualizar</string>
     <string name="Text_status">status:</string>
     <string name="Ir">Ir ate o Local</string>
     <string name="Entrar_sem_logar">Entrar sem Logar</string>
@@ -24,7 +29,7 @@
     <string name="Text_preço">Preço:</string>
     <string name="voltar">Voltar</string>
     <string name="menu_slideshow">Configurações</string>
-    <string name="menu_tools">Tools</string>
+    <string name="config_conta">Configuração da conta</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Sobre o App</string>
     <string name="start">Processar..</string>
