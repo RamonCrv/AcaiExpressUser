@@ -88,6 +88,7 @@ public class Notas extends AppCompatActivity {
                 alert("Obrigado por avaliar");
                 Intent i = new Intent(Notas.this, InfoPonto.class);
                 startActivity(i);
+                finish();
             }
         });
     }

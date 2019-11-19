@@ -84,6 +84,9 @@ public class userConfig2 extends AppCompatActivity {
                     Toast.makeText(userConfig2.this, "Atualizado Com Sucesso",
                             Toast.LENGTH_SHORT).show();
                     salvarNome();
+                    Intent i = new Intent(userConfig2.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
                 }
                 trocouImagem = false;
 

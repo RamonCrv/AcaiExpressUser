@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
                 Intent b = new Intent(this.getBaseContext(), Lista.class);
                 startActivity(b);
 
+
                 if(auth.getCurrentUser() != null){
                     }
                 }else{
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             if(auth.getCurrentUser() != null) {
                 Intent g = new Intent(this, userConfig2.class);
                 startActivity(g);
+                finish();
             }else{
                 Toast.makeText(this.getBaseContext(), "É necessario estar logado para confirurar conta",
                         Toast.LENGTH_SHORT).show();
@@ -191,6 +193,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             }
         });
     }
+
+
        // return true;
     }
 

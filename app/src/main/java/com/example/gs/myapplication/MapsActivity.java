@@ -215,6 +215,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
                 Intent i = new Intent(getActivity(),InfoPonto.class);
                startActivity(i);
+               getActivity().finish();
                 return true;
 
             }

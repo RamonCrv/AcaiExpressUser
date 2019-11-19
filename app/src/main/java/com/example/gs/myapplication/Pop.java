@@ -49,6 +49,7 @@ public class Pop extends Activity {
                 verificarCodAva(recCodAva.getText().toString());
 
 
+
             }
         });
     }
@@ -65,6 +66,7 @@ public class Pop extends Activity {
 
                     Intent i = new Intent(Pop.this, Notas.class);
                     startActivity(i);
+                    finish();
 
                 }else {
                     Toast.makeText(Pop.this, "Codigo incorreto",

@@ -109,6 +109,9 @@ public class InfoPonto extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent i = new Intent(InfoPonto.this, MainActivity.class);
+                startActivity(i);
                 finish();
             }
         });
