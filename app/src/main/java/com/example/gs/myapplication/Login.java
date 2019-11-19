@@ -138,6 +138,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Login.this, Cadastro.class);
                 startActivity(i);
+                finish();
             }
         });
 

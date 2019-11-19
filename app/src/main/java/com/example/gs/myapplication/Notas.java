@@ -134,7 +134,6 @@ public class Notas extends AppCompatActivity {
                         }
                     });
 
-
                 }else{
                     String str = MapsActivity.InfoSalvas.getString("key");
                     databaseDoc2 = FirebaseDatabase.getInstance().getReference();
@@ -143,7 +142,7 @@ public class Notas extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
                                 String str = MapsActivity.InfoSalvas.getString("key");
-                                float tdav = Float.parseFloat(dataSnapshot.child(str).child("totalAv").getValue().toString());
+                                int tdav = Integer.parseInt(dataSnapshot.child(str).child("totalAv").getValue().toString());
                                 float vtav = Float.parseFloat(dataSnapshot.child(str).child("somaAv").getValue().toString());
                                 vtav+=notaDoUser;
                                 tdav+=1;

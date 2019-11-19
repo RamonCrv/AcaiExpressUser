@@ -86,9 +86,10 @@ public class userConfig2 extends AppCompatActivity {
                     salvarNome();
                     Intent i = new Intent(userConfig2.this,MainActivity.class);
                     startActivity(i);
-                    finish();
+
                 }
                 trocouImagem = false;
+                finish();
 
             }
         });

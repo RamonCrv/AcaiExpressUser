@@ -54,7 +54,7 @@ public class InfoPonto extends AppCompatActivity {
     public Button button;
     public Button voltar;
     public Button irAteLocal;
-
+    private TextView Datat;
     private boolean taFavoritado;
     public  boolean eFavorito;
 
@@ -80,6 +80,7 @@ public class InfoPonto extends AppCompatActivity {
         inicializarComponentes();
         BuscarImg();
         BuscarDoc();
+        attData();
         pegarLocalDoPonto();
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
@@ -130,8 +131,6 @@ public class InfoPonto extends AppCompatActivity {
                     Toast.makeText(InfoPonto.this, "É necessario estar logado para avaliar um ponto.",
                             Toast.LENGTH_SHORT).show();
                 }
-
-
 
             }
         });
@@ -186,6 +185,7 @@ public class InfoPonto extends AppCompatActivity {
         voltar = (findViewById(R.id.ButtVoltarXML));
         btnestar = (findViewById(R.id.btnestar));
         irAteLocal = (findViewById(R.id.button2));
+        Datat= (findViewById(R.id.data));
 
 
 
@@ -321,6 +321,24 @@ public class InfoPonto extends AppCompatActivity {
 
 
 
+    }
+
+    void attData(){
+        String str = MapsActivity.InfoSalvas.getString("key");
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Ponto/"+str+"/data");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                   Datat.setText(dataSnapshot.getValue().toString());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
