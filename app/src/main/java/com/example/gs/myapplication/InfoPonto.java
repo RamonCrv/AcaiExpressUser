@@ -142,14 +142,14 @@ public class InfoPonto extends AppCompatActivity {
                 if (auth.getCurrentUser() != null){
                     if (eFavorito){
                      Desfavoritar();
-                        btnestar.setBackgroundResource(R.mipmap.estrelaoff_background);
+                        btnestar.setBackgroundResource(R.mipmap.coracaooff_background);
                         eFavorito = !eFavorito;
                     }else{
                         salvarNosFavoritos();
                         Toast.makeText(InfoPonto.this, "Posto Favoritado",
                                 Toast.LENGTH_SHORT).show();
                         eFavorito = !eFavorito;
-                        btnestar.setBackgroundResource(R.mipmap.estrelaon_background);
+                        btnestar.setBackgroundResource(R.mipmap.coracaoon_background);
                     }
                 }else {
                     Toast.makeText(InfoPonto.this, "É necessario estar logado para favoritar",
