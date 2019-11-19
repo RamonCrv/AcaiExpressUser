@@ -156,8 +156,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             @Override
             public void onSuccess(Uri uri) {
                 url = uri.toString();
-                Toast.makeText(MainActivity.this, url,
-                        Toast.LENGTH_SHORT).show();
                glide(url, imgUser);
             }
 
