@@ -50,7 +50,7 @@
         android:id="@+id/nomeUserConf"
         android:layout_width="318dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_gravity="center"
         android:layout_marginTop="70dp"
         android:gravity="center"
         android:hint="@string/Text_user_name"
@@ -64,12 +64,22 @@
         android:id="@+id/btSalvar"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/texts"
         android:text="@string/salvar_atualizar"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+    <Button
+        android:id="@+id/btcancelar"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn1"
+        android:textSize="20sp"
+        android:text="Cancelar">
+    </Button>
 </LinearLayout>
 
 

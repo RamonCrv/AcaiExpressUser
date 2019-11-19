@@ -47,6 +47,7 @@ public class userConfig2 extends AppCompatActivity {
     private Uri mUri;
     private String url;
     private FirebaseAuth auth;
+    private Button btCacelar;
     private boolean trocouImagem;
 
 
@@ -66,13 +67,19 @@ public class userConfig2 extends AppCompatActivity {
         ediImg = (findViewById(R.id.tbEdit));
         salvar = (findViewById(R.id.btSalvar));
         nomeUser = (findViewById(R.id.nomeUserConf));
+        btCacelar = (findViewById(R.id.btcancelar));
 
 
     }
 
     void clicks(){
 
-
+btCacelar.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        finish();
+    }
+});
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +93,7 @@ public class userConfig2 extends AppCompatActivity {
                     salvarNome();
                     Intent i = new Intent(userConfig2.this,MainActivity.class);
                     startActivity(i);
+
 
                 }
                 trocouImagem = false;

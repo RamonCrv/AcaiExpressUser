@@ -70,6 +70,16 @@
         android:background="@drawable/texts"
         android:text="Salvar/Atualizar"
         android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/btcancelar"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn1"
+        android:textSize="20sp"
+        android:text="Cancelar">
+    </Button>
 </LinearLayout>
 
 

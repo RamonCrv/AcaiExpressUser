@@ -75,7 +75,7 @@ public class InfoPonto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ponto);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        Intent b = new Intent(InfoPonto.this, Carregando.class);
+        Intent b = new Intent(InfoPonto.this, One.class);
         startActivity(b);
         inicializarComponentes();
         BuscarImg();

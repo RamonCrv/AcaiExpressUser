@@ -130,14 +130,12 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
 
 
              }else if (id == R.id.nav_config){
-            Intent h = new Intent(this, userConfig2.class);
-            startActivity(h);
-            finish();
+
 
             if(auth.getCurrentUser() != null) {
                 Intent g = new Intent(this, userConfig2.class);
                 startActivity(g);
-                finish();
+               // finish();
             }else{
                 Toast.makeText(this.getBaseContext(), "É necessario estar logado para confirurar conta",
                         Toast.LENGTH_SHORT).show();
