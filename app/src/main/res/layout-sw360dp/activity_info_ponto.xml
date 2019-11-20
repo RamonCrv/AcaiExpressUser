@@ -87,7 +87,7 @@
         android:id="@+id/txtAV"
         android:layout_width="wrap_content"
         android:layout_height="49dp"
-        android:drawableLeft="@drawable/starBlue"
+        android:drawableLeft="@drawable/starblue"
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:textColorLink="#00FF0000"
