@@ -110,7 +110,7 @@ public class Notas extends AppCompatActivity {
                             if(dataSnapshot.exists()){
                                 String str = MapsActivity.InfoSalvas.getString("key");
                                 float vtav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/somaAv").getValue().toString());
-                                float tdav = Float.parseFloat(dataSnapshot.child("Ponto/"+str+"/totalAv").getValue().toString());
+                                int tdav = Integer.parseInt(dataSnapshot.child("Ponto/"+str+"/totalAv").getValue().toString());
 
                                int notaAtual = Integer.parseInt(dataSnapshot.child("Usuario/"+auth.getCurrentUser().getUid()+"/PontosAvaliados/"+str+"/Nota").getValue().toString());
 
@@ -118,7 +118,8 @@ public class Notas extends AppCompatActivity {
                                 vtav+=notaDoUser;
 
                                 float media= vtav/tdav;
-                                String mediaS = String.valueOf(media);
+                                String resultado = String.format("%.2f", media);
+                                String mediaS = resultado;//String.valueOf(media);
                                 String tdavS = String.valueOf(tdav);
                                 String vtavS = String.valueOf(vtav);
                                 salvarNosFavoritos(str);
@@ -147,7 +148,8 @@ public class Notas extends AppCompatActivity {
                                 vtav+=notaDoUser;
                                 tdav+=1;
                                 float media= vtav/tdav;
-                                String mediaS = String.valueOf(media);
+                                String resultado = String.format("%.2f", media);
+                                String mediaS = resultado;
                                 String tdavS = String.valueOf(tdav);
                                 String vtavS = String.valueOf(vtav);
                                 salvarNosFavoritos(str);

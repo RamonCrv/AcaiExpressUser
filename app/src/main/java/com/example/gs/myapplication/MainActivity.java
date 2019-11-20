@@ -53,11 +53,15 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicialziarComponentes();
-        BuscarImg();
-        pegarNome();
+        auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null){
+            BuscarImg();
+            pegarNome();
+        }
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setNavigationViewListener();
-        auth = FirebaseAuth.getInstance();
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -113,6 +117,9 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
                         Toast.LENGTH_SHORT).show();
             }
             } else if (id == R.id.nav_sair){
+            Intent y = new Intent(this, Login.class);
+            startActivity(y);
+            finish();
             if(auth.getCurrentUser() != null){
                 Intent g = new Intent(this, Login.class);
                 startActivity(g);
@@ -190,9 +197,13 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 
 
-       // return true;
+
     }
 
 

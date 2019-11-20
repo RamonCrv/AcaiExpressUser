@@ -190,12 +190,13 @@ public class InfoPonto extends AppCompatActivity {
 
     public void BuscarImg(){
         String str = MapsActivity.InfoSalvas.getString("key");
-        final StorageReference ref = FirebaseStorage.getInstance().getReference().child("/images/").child(str);
+        final StorageReference ref = FirebaseStorage.getInstance().getReference().child("/Imagens/Ponto/").child(str);
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 url = uri.toString();
                 glide(url,ImagemDoPonto);
+
 
             }
 
@@ -217,6 +218,7 @@ public class InfoPonto extends AppCompatActivity {
                     String str = MapsActivity.InfoSalvas.getString("key");
                     idDoPonto = str;
                     nomeDoPonto.setText(dataSnapshot.child(str).child("nome").getValue().toString());
+
                      mednota.setText(dataSnapshot.child(str).child("mediaAv").getValue().toString());
                     PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString()+"/L");
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
@@ -336,6 +338,13 @@ public class InfoPonto extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(InfoPonto.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
 
