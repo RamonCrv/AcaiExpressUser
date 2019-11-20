@@ -1,10 +1,7 @@
 package com.example.gs.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,13 +25,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.Locale;
-import java.util.Map;
 
 public class InfoPonto extends AppCompatActivity {
     String url;
@@ -63,8 +55,6 @@ public class InfoPonto extends AppCompatActivity {
     private LocationManager locationManager;
     private String latUser;
     private String longUser;
-
-
 
     private float  LatDoPonto;
     private String latDoPonto;
@@ -104,10 +94,6 @@ public class InfoPonto extends AppCompatActivity {
         }
         eventoClicks();
 
-        //String str = MapsActivity.InfoSalvas.getString("key");
-       // Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-
-
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +103,6 @@ public class InfoPonto extends AppCompatActivity {
                 finish();
             }
         });
-
 
     }
 
@@ -162,14 +147,12 @@ public class InfoPonto extends AppCompatActivity {
            @Override
            public void onClick(View v) {
 
-
                //ABRIR MAPS TALVEZ PEGANDO AS INFOS DO PONTO E DO USUARIO
 
                String uri = "http://maps.google.com/maps?saddr=" + latUser + "," + longUser + "&daddr=" +latDoPonto + "," + longDoPonto;
                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                intent.setPackage("com.google.android.apps.maps");
                startActivity(intent);
-
 
            }
        });
@@ -187,8 +170,6 @@ public class InfoPonto extends AppCompatActivity {
         btnestar = (findViewById(R.id.btnestar));
         irAteLocal = (findViewById(R.id.button2));
         Datat= (findViewById(R.id.data));
-
-
 
     }
 
@@ -227,7 +208,6 @@ public class InfoPonto extends AppCompatActivity {
                     PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString()+"/L");
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
 
-
                 }else {
                     Toast.makeText(InfoPonto.this, "erro ao carregar dados",
                             Toast.LENGTH_SHORT).show();
@@ -239,7 +219,6 @@ public class InfoPonto extends AppCompatActivity {
             }
         });
     }
-
 
     public void salvarNosFavoritos(){
         databaseDoc3 = FirebaseDatabase.getInstance().getReference("Usuario");
@@ -301,7 +280,6 @@ public class InfoPonto extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    //longDoPonto = Double.parseDouble(dataSnapshot.getValue().toString());
                     longDoPonto = dataSnapshot.getValue().toString();
                 }
 
@@ -323,8 +301,6 @@ public class InfoPonto extends AppCompatActivity {
             //longUser = location.getLongitude();
 
         }
-
-
 
     }
 
