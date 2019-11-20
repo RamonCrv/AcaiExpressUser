@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.common.internal.Constants;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,7 +31,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -60,8 +57,6 @@ import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener  {
     public MapView mapView;
     public GoogleMap mMap;
@@ -82,8 +77,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-        onMyLocationButtonClick();
-        onMyLocationClick(location);
 
 
     }
@@ -117,26 +110,22 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
         if (mapView != null &&
                 mapView.findViewById(Integer.parseInt("1")) != null) {
+            // Get the button view
+            View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+            // and next place it, on bottom right (as Google Maps app)
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+                    locationButton.getLayoutParams();
+            // position on right bottom
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParams.setMargins(0, 0, 30, 30);
 
-
-
-
+        }else{
 
         }
         mMap = googleMap;
         criarPontos(googleMap);
-       // LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-       // Criteria criteria = new Criteria();
 
-        // location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-
-     //   CameraPosition cameraPosition = new CameraPosition.Builder()
-      //          .target(new LatLng(location.getLatitude(), location.getLongitude()))      // Sets the center of the map to location user
-       //         .zoom(17)                   // Sets the zoom
-       //         .bearing(90)                // Sets the orientation of the camera to east
-       //         .tilt(40)                   // Sets the tilt of the camera to 30 degrees
-       //         .build();                   // Creates a CameraPosition from the builder
-       // mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         //ATUALIZA OS PONTOS EM TEMPO REAL.
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
@@ -155,10 +144,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
         LatLng latLng = new LatLng(0.025921, -51.068596);
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom( latLng, 16.2f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.4f));
         mMap.setTrafficEnabled(false);
-        mMap.setMinZoomPreference(10.0f);
-        mMap.setMaxZoomPreference(18.5f);
+        mMap.setMinZoomPreference(13.0f);
+        mMap.setMaxZoomPreference(17.5f);
         mMap.setIndoorEnabled(true);
         mMap.getFocusedBuilding();
         mMap.setOnMyLocationButtonClickListener(this);
@@ -236,10 +225,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         });
 
     }
-
-
-
-
 
     private static String getRandomString(final int sizeOfRandomString)
     {
