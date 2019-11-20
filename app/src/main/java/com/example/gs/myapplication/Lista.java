@@ -152,15 +152,10 @@ public class Lista extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
-
-
                             String latP = dataSnapshot.child("latiT").getValue().toString();
                             String longP = dataSnapshot.child("longT").getValue().toString();
                             Double LatPDb = Double.parseDouble(latP);
                             Double LongPDb = Double.parseDouble(longP);
-
 
 
                             Double lat  = 0.0;

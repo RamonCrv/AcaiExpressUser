@@ -118,7 +118,7 @@ public class Notas extends AppCompatActivity {
                                 vtav+=notaDoUser;
 
                                 float media= vtav/tdav;
-                                String resultado = String.format("%.2f", media);
+                                String resultado = String.format("%.1f", media);
                                 String mediaS = resultado;//String.valueOf(media);
                                 String tdavS = String.valueOf(tdav);
                                 String vtavS = String.valueOf(vtav);
@@ -148,7 +148,7 @@ public class Notas extends AppCompatActivity {
                                 vtav+=notaDoUser;
                                 tdav+=1;
                                 float media= vtav/tdav;
-                                String resultado = String.format("%.2f", media);
+                                String resultado = String.format("%.1f", media);
                                 String mediaS = resultado;
                                 String tdavS = String.valueOf(tdav);
                                 String vtavS = String.valueOf(vtav);

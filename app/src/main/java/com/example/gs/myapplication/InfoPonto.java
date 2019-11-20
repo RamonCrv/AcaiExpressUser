@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ import java.util.Map;
 public class InfoPonto extends AppCompatActivity {
     String url;
     private  FirebaseAuth auth;
-
+    private ProgressBar progressBar;
     FirebaseDatabase firebaseDatabase;
     private Button btnComent;
     private ImageButton btnestar;
@@ -78,7 +79,10 @@ public class InfoPonto extends AppCompatActivity {
         BuscarImg();
         BuscarDoc();
         attData();
+        startt();
+        progressBar.setVisibility(View.VISIBLE);
         pegarLocalDoPonto();
+
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
         databaseDoc5.child("Ponto").addValueEventListener(new ValueEventListener() {
@@ -196,7 +200,7 @@ public class InfoPonto extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 url = uri.toString();
                 glide(url,ImagemDoPonto);
-
+                progressBar.setVisibility(View.GONE);
 
             }
 
@@ -223,6 +227,7 @@ public class InfoPonto extends AppCompatActivity {
                     PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString()+"/L");
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
 
+
                 }else {
                     Toast.makeText(InfoPonto.this, "erro ao carregar dados",
                             Toast.LENGTH_SHORT).show();
@@ -234,6 +239,7 @@ public class InfoPonto extends AppCompatActivity {
             }
         });
     }
+
 
     public void salvarNosFavoritos(){
         databaseDoc3 = FirebaseDatabase.getInstance().getReference("Usuario");
@@ -346,6 +352,8 @@ public class InfoPonto extends AppCompatActivity {
         startActivity(i);
         finish();
     }
-
+    private void startt(){
+        this.progressBar = findViewById(R.id.progressBar);
+    }
 
 }
