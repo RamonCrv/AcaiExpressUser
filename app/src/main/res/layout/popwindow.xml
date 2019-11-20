@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:background="@drawable/btn1"
-        android:text="OK"
+        android:text="@string/Text_enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recCodAvaV"
         app:layout_constraintHorizontal_bias="0.496"
