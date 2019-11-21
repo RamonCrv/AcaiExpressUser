@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundoapp2"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     tools:context=".InfoPonto">
 
 
@@ -13,32 +15,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:text=""
         android:textColor="#FFC107"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ImgPt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-    <TextView
-        android:id="@+id/data"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:gravity="center"
-        android:textColor="#E92C2828"
-        android:textSize="18sp"
-        android:textStyle="italic|bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0" />
 
-    </TextView>
     <ImageView
         android:id="@+id/ImgPt"
         android:layout_width="match_parent"
@@ -51,207 +39,183 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.169"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/StatusXML"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background="#00FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/precoXML"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/precoXML"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="1.0" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="72dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="-40dp"
+        android:src="@color/color3" />
+    <ImageButton
+        android:id="@+id/btnestar"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="328dp"
+        android:layout_marginTop="-55dp"
+        android:background="@mipmap/estrelaoff_background"
+        android:visibility="visible"
+        tools:visibility="visible" />
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
         android:layout_width="177dp"
         android:layout_height="164dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
-    <Button
-        android:id="@+id/ButtVoltarXML"
-        android:layout_width="85dp"
-        android:layout_height="44dp"
-        android:background="@drawable/btn1"
-        android:text="Voltar"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.775" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn1"
-        android:text="Ir ate o local"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mednota"
-        app:layout_constraintVertical_bias="0.625" />
+        android:layout_marginTop="-250dp"
+        android:layout_gravity="center"
+        app:layout_constraintVertical_bias="0.25" />
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Nota de Higiene"
         android:textColor="#0B48BD"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtAV"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
         app:layout_constraintVertical_bias="1.0" />
-
     <TextView
         android:id="@+id/txtAV"
         android:layout_width="wrap_content"
         android:layout_height="49dp"
-        android:drawableLeft="@drawable/starblue"
+        android:drawableEnd="@drawable/starblue"
+        android:layout_marginStart="50dp"
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:textColorLink="#00FF0000"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mednota"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
         app:layout_constraintVertical_bias="0.216" />
-
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:text="Nota Usuarios"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="-75dp"
         android:textColor="#FFEB3B"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/mednota"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImgPt"
         app:layout_constraintVertical_bias="1.0" />
-    <Button
-        android:id="@+id/button20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/btn1"
-        android:text="Avaliar Local"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/ButtVoltarXML"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
-        android:layout_width="72dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="260dp"
-        android:src="@color/color3"
-        app:layout_constraintEnd_toEndOf="@+id/ImgPt"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="@+id/ImgPt"
-        app:layout_constraintTop_toBottomOf="@+id/PontNomeXML" />
-
-    <ImageButton
-        android:id="@+id/btnestar"
-        android:layout_width="36dp"
-        android:layout_height="38dp"
-        android:layout_gravity="center"
-        android:background="@mipmap/estrelaoff_background"
-        android:visibility="visible"
-
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-        app:layout_constraintEnd_toEndOf="@+id/circleImageView"
-        app:layout_constraintStart_toStartOf="@+id/circleImageView"
-        app:layout_constraintTop_toTopOf="@+id/circleImageView"
-        tools:visibility="visible" />
-
     <TextView
         android:id="@+id/mednota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/star2"
+        android:drawableStart="@drawable/star0"
+        android:layout_marginStart="320dp"
         android:textColor="#FFEB3B"
-        android:textSize="56sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnestar"
-        app:layout_constraintVertical_bias="0.029999971" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:text="Preço:"
-        android:textColor="#FFFFFF"
         android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/precoXML"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
-
+        app:layout_constraintVertical_bias="0.178" />
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/data"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginRight="10dp"
-        android:text="Status:"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/StatusXML"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="20dp"
+        android:gravity="start"
+        android:layout_marginTop="-100dp"
+        android:textColor="#E92C2828"
+        android:textSize="18sp"
+        android:textStyle="italic|bold">
+    </TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="80dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="10dp"
+                android:text="Preço:"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="1dp"
+                android:text="Status:"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/StatusXML"
+                app:layout_constraintEnd_toStartOf="@+id/StatusXML"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/StatusXML"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/StatusXML"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="-89dp"
+                android:background="#00FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <TextView
+                android:id="@+id/precoXML"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="19dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintVertical_bias="1.0" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn1"
+                android:text="@string/Ir"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="-50dp"
+                android:background="@drawable/btn1"
+                android:text="@string/text_avaliar_local"
+                android:textColor="#FFFFFF"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/ButtVoltarXML"
+                android:layout_width="66dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="180dp"
+                android:background="@drawable/btn1"
+                android:text="@string/voltar"
+                android:textColor="#FFFFFF"
+                app:layout_constraintVertical_bias="0.812" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -46,40 +46,57 @@
 
     </Button>
 
-    <EditText
-        android:id="@+id/nomeUserConf"
-        android:layout_width="318dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="70dp"
-        android:gravity="center"
-        android:hint="@string/Text_user_name"
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="396dp">
 
-    <Button
-        android:id="@+id/btSalvar"
-        android:layout_width="250sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-        android:background="@drawable/texts"
-        android:text="@string/salvar_atualizar"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp" />
-    <Button
-        android:id="@+id/btcancelar"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn1"
-        android:textSize="20sp"
-        android:text="Cancelar">
-    </Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nomeUserConf"
+                android:layout_width="318dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:drawableLeft="@drawable/edite"
+                android:gravity="center"
+                android:hint="@string/Text_user_name"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#90FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btSalvar"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="150dp"
+                android:background="@drawable/texts"
+                android:text="@string/salvar_atualizar"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btcancelar"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn1"
+                android:text="Cancelar"
+                android:textColor="#8A0000"
+                android:textColorHint="#009E0101"
+                android:textSize="20sp">
+
+            </Button>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
 
 

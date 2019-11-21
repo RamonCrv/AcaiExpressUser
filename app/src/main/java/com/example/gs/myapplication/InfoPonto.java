@@ -55,7 +55,7 @@ public class InfoPonto extends AppCompatActivity {
     private LocationManager locationManager;
     private String latUser;
     private String longUser;
-
+    final Context context = this;
     private float  LatDoPonto;
     private String latDoPonto;
     private String longDoPonto;
@@ -72,6 +72,7 @@ public class InfoPonto extends AppCompatActivity {
         startt();
         progressBar.setVisibility(View.VISIBLE);
         pegarLocalDoPonto();
+
 
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
@@ -106,13 +107,16 @@ public class InfoPonto extends AppCompatActivity {
 
     }
 
+
     private void eventoClicks() {
+
+
 
         btnComent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (auth.getCurrentUser() != null){
-                    startActivity(new Intent(InfoPonto.this,Pop.class));
+                   startActivity(new Intent(InfoPonto.this,Pop.class));
                 }else {
                     Toast.makeText(InfoPonto.this, "É necessario estar logado para avaliar um ponto.",
                             Toast.LENGTH_SHORT).show();
@@ -205,7 +209,7 @@ public class InfoPonto extends AppCompatActivity {
                     nomeDoPonto.setText(dataSnapshot.child(str).child("nome").getValue().toString());
 
                      mednota.setText(dataSnapshot.child(str).child("mediaAv").getValue().toString());
-                    PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString()+"/L");
+                    PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString());
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
 
                 }else {

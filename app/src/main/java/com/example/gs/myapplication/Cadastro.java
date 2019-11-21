@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,15 +27,11 @@ public class Cadastro extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-        getWindow().setLayout((int)(width*.8),(int)(height*.6));
 
 
         inicializarComponentes();
@@ -47,6 +44,8 @@ public class Cadastro extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i =new Intent(Cadastro.this, Login.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -104,6 +103,12 @@ public class Cadastro extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER_VERTICAL, 0,0);
         toast.setDuration(Toast.LENGTH_SHORT);
         Toast.makeText(Cadastro.this,msg,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(Cadastro.this, Login.class);
+        startActivity(i);
+        finish();
     }
 }
 

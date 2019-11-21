@@ -143,7 +143,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         });
 
         LatLng latLng = new LatLng(0.025921, -51.068596);
-
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.4f));
         mMap.setTrafficEnabled(false);
         mMap.setMinZoomPreference(13.0f);
@@ -171,6 +170,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
 
     public void criarPontos(GoogleMap googleMap){
+        Toast.makeText(getActivity(), "entro no ponto", Toast.LENGTH_SHORT).show();
         mMap = googleMap;
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();

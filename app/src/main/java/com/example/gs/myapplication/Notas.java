@@ -31,6 +31,11 @@ public class Notas extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        getWindow().setLayout((int)(width*.8),(int)(height*.3));
         auth = FirebaseAuth.getInstance();
         SmileRating smileRating = (SmileRating) findViewById(R.id.smile_rating);
         smileRating.setNameForSmile(BaseRating.BAD,"Ruim") ;
