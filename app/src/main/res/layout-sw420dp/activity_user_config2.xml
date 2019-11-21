@@ -16,18 +16,26 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:gravity="center"
+        android:layout_marginBottom="50dp"
         android:text="@string/config_conta"
         android:textColor="#FFFFFF"
         android:textSize="42sp"
         android:textStyle="bold" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
+        android:layout_width="177dp"
+        android:layout_height="164dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="-190dp"
+        />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginStart="110dp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:src="@mipmap/logosemfundo"
         app:civ_border_color="#FFFFFF"
         app:civ_border_width="2dp" />
 
@@ -36,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_gravity="start|center"
-        android:layout_marginStart="280dp"
+        android:layout_marginStart="285dp"
         android:layout_marginTop="-40dp"
         android:background="@drawable/btn1"
         android:drawableStart="@drawable/edite"

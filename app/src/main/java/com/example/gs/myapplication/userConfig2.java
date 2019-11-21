@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -88,17 +89,14 @@ btCacelar.setOnClickListener(new View.OnClickListener() {
                     saveUserInFirebase();
                 }
                 if (nomeUser.getText().toString() != null){
-                    Toast.makeText(userConfig2.this, "Atualizado Com Sucesso",
+                    Toast.makeText(userConfig2.this, "Atualizando...",
                             Toast.LENGTH_SHORT).show();
                     salvarNome();
-                    Intent i = new Intent(userConfig2.this,MainActivity.class);
-                    startActivity(i);
-
-
+                    tempo();
                 }
                 trocouImagem = false;
-                finish();
-
+                tempo();
+                
             }
         });
 
@@ -109,11 +107,23 @@ btCacelar.setOnClickListener(new View.OnClickListener() {
                 trocouImagem = true;
 
 
+
             }
         });
 
     }
 
+    public void tempo(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                Intent i = new Intent(userConfig2.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        },3000);
+    }
 
 
     private void selectfoto(){

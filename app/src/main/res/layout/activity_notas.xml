@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/fundoapp2"
+    android:orientation="vertical"
+    android:background="@color/grey_60"
     android:layout_height="match_parent"
     tools:context=".Notas">
 
     <com.hsalf.smilerating.SmileRating
         android:id="@+id/smile_rating"
-        android:layout_marginTop="350dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:layout_marginStart="150sp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
         android:background="@drawable/btn1"
         android:text="@string/Text_enviar"
         android:textColor="#FFFFFF" />
-</RelativeLayout>
+</LinearLayout>
