@@ -41,6 +41,7 @@ public class InfoPonto extends AppCompatActivity {
     private TextView mednota;
     private TextView StatusDoPonto;
     private TextView PrecoDoPonto;
+    private  TextView txtAv;
     public String idDoPonto;
     DatabaseReference databaseDoc2;
     DatabaseReference databaseDoc3;
@@ -70,6 +71,7 @@ public class InfoPonto extends AppCompatActivity {
         BuscarDoc();
         attData();
         startt();
+        pegarNotaHigi();
         progressBar.setVisibility(View.VISIBLE);
         pegarLocalDoPonto();
 
@@ -174,6 +176,7 @@ public class InfoPonto extends AppCompatActivity {
         btnestar = (findViewById(R.id.btnestar));
         irAteLocal = (findViewById(R.id.button2));
         Datat= (findViewById(R.id.data));
+        txtAv = (findViewById(R.id.txtAV));
 
     }
 
@@ -334,6 +337,26 @@ public class InfoPonto extends AppCompatActivity {
     }
     private void startt(){
         this.progressBar = findViewById(R.id.progressBar);
+    }
+
+    void pegarNotaHigi(){
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String str = MapsActivity.InfoSalvas.getString("key");
+        mDatabase.child("Ponto/" + str + "/nNota").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    txtAv.setText(dataSnapshot.getValue().toString());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="288dp"
                 android:scaleType="fitXY"
-                android:layout_marginTop="165dp"
+                android:layout_marginTop="195dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ProgressBar
@@ -106,25 +106,34 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 android:text="@string/menu_ava"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintVertical_bias="1.0" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_gravity="center_horizontal"
 
+        android:background="@mipmap/starnnn_background"/>
             <TextView
                 android:id="@+id/mednota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:drawableStart="@drawable/star0"
+                android:layout_marginStart="-20dp"
+                android:layout_marginTop="25dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:textSize="36sp"
+                android:textSize="56sp"
                 app:layout_constraintVertical_bias="0.178" />
 
+        </LinearLayout>
             <View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
@@ -152,10 +161,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
-                android:drawableEnd="@drawable/starblue"
+                android:drawableStart="@drawable/starblue"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textColorLink="#00FF0000"
                 android:textSize="36sp"
                 app:layout_constraintVertical_bias="0.216" />
@@ -164,7 +173,7 @@
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="25dp"
                 android:background="?android:attr/listDivider" />
 
 
@@ -222,7 +231,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -303,7 +312,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="15dp"
                 />
 
 
