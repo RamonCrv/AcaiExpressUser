@@ -105,6 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 android:text="@string/menu_ava"
                 android:textColor="#000000"
@@ -118,6 +120,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:drawableStart="@drawable/star0"
+                android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="36sp"
                 app:layout_constraintVertical_bias="0.178" />
@@ -129,11 +132,15 @@
                 android:layout_marginTop="5dp"
                 android:background="?android:attr/listDivider" />
 
+
+
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/Text_higi"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -146,9 +153,9 @@
                 android:layout_height="49dp"
                 android:layout_gravity="center"
                 android:drawableEnd="@drawable/starblue"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
-
                 android:textColorLink="#00FF0000"
                 android:textSize="36sp"
                 app:layout_constraintVertical_bias="0.216" />
@@ -165,13 +172,14 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_gravity="start"
-                android:layout_marginBottom="10dp"
                 android:text="@string/Preco"
                 android:textColor="#000000"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintVertical_bias="0.0" />
+
             <TextView
 
                 android:id="@+id/precoXML"
@@ -179,12 +187,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="#00FFFFFF"
                 android:backgroundTint="#FFFFFF"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintVertical_bias="1.0" />
             <View
@@ -200,6 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginTop="1dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/Text_status"
                 android:textColor="#000000"
                 android:textSize="26sp"
@@ -212,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -278,7 +288,7 @@
                 android:id="@+id/data"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginTop="200dp"
                 android:layout_gravity="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
@@ -293,7 +303,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="50dp"
                 />
 
 
