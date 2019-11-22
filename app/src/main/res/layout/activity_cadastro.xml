@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fundoapp4"
     tools:context=".Cadastro">
 
     <ScrollView
@@ -31,6 +30,7 @@
             android:gravity="center|start"
             android:hint=" Email:"
             android:inputType="textEmailAddress"
+            android:textColorHint="#000000"
             app:layout_constraintVertical_bias="0.129" />
 
 
@@ -38,26 +38,28 @@
             android:id="@+id/editSenha"
             android:layout_width="271dp"
             android:layout_height="46dp"
-            android:layout_marginTop="24dp"
             android:layout_gravity="center"
+            android:layout_marginTop="24dp"
             android:background="@drawable/texts"
             android:drawableLeft="@drawable/usar"
             android:ems="10"
             android:hint=" Senha:"
             android:inputType="textPassword"
+            android:textColorHint="#000000"
             app:layout_constraintVertical_bias="0.003" />
 
         <EditText
             android:id="@+id/ConfSenha"
             android:layout_width="271dp"
             android:layout_height="46dp"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:background="@drawable/texts"
             android:drawableLeft="@drawable/usar"
             android:ems="10"
             android:hint="Confirmar Senha"
             android:inputType="textPassword"
+            android:textColorHint="#000000"
             app:layout_constraintTop_toBottomOf="@+id/editSenha" />
 
         <Button
