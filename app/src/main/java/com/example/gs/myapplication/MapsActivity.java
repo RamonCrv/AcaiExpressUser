@@ -170,7 +170,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
 
     public void criarPontos(GoogleMap googleMap){
-        Toast.makeText(getActivity(), "entro no ponto", Toast.LENGTH_SHORT).show();
         mMap = googleMap;
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();

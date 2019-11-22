@@ -21,29 +21,23 @@
             android:name=".sheet"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".Notas"
-            android:screenOrientation="portrait" />
+            android:name=".Notas" />
         <activity
-            android:name=".Lista"
-            android:screenOrientation="portrait" />
+            android:name=".Lista" />
         <activity
             android:name=".One"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Cadastro"
-            android:screenOrientation="portrait" />
+            android:name=".Cadastro" />
         <activity
-            android:name=".Carregando"
-            android:screenOrientation="portrait" />
+            android:name=".Carregando" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".InfoPonto" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Login">
             <intent-filter>
@@ -55,7 +49,6 @@
         <activity
             android:name=".Pop"
             android:theme="@style/AppTheme.Custom" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
