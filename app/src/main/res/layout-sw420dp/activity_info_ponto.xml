@@ -36,8 +36,7 @@
         android:background="@color/color4"
         android:text=""
         android:textColor="#FFFFFF"
-        android:textCursorDrawable="@color/color4"
-        android:textSize="40sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -45,7 +44,8 @@
         android:id="@+id/btnestar"
         android:layout_width="36dp"
         android:layout_height="38dp"
-        android:layout_marginStart="348dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="-52dp"
         android:background="@mipmap/estrelaoff_background"
         android:visibility="visible"

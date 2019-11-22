@@ -36,8 +36,7 @@
         android:background="@color/color4"
         android:text=""
         android:textColor="#FFFFFF"
-        android:textCursorDrawable="@color/color4"
-        android:textSize="40sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -45,7 +44,8 @@
         android:id="@+id/btnestar"
         android:layout_width="36dp"
         android:layout_height="38dp"
-        android:layout_marginStart="348dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="-52dp"
         android:background="@mipmap/estrelaoff_background"
         android:visibility="visible"
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="288dp"
                 android:scaleType="fitXY"
-                android:layout_marginTop="165dp"
+                android:layout_marginTop="195dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ProgressBar
@@ -105,23 +105,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginStart="10dp"
                 android:textStyle="bold"
                 android:text="@string/menu_ava"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintVertical_bias="1.0" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_gravity="center_horizontal"
 
+        android:background="@mipmap/starnnn_background"/>
             <TextView
                 android:id="@+id/mednota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:drawableStart="@drawable/star0"
+                android:layout_marginStart="-20dp"
+                android:layout_marginTop="25dp"
+                android:textStyle="bold"
                 android:textColor="#000000"
-                android:textSize="36sp"
+                android:textSize="56sp"
                 app:layout_constraintVertical_bias="0.178" />
 
+        </LinearLayout>
             <View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
@@ -129,11 +141,15 @@
                 android:layout_marginTop="5dp"
                 android:background="?android:attr/listDivider" />
 
+
+
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/Text_higi"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -145,10 +161,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
-                android:drawableEnd="@drawable/starblue"
+                android:drawableStart="@drawable/starblue"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
-
+                android:textColor="#000000"
                 android:textColorLink="#00FF0000"
                 android:textSize="36sp"
                 app:layout_constraintVertical_bias="0.216" />
@@ -157,7 +173,7 @@
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="25dp"
                 android:background="?android:attr/listDivider" />
 
 
@@ -165,13 +181,14 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_gravity="start"
-                android:layout_marginBottom="10dp"
                 android:text="@string/Preco"
                 android:textColor="#000000"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintVertical_bias="0.0" />
+
             <TextView
 
                 android:id="@+id/precoXML"
@@ -179,12 +196,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="#00FFFFFF"
                 android:backgroundTint="#FFFFFF"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintVertical_bias="1.0" />
             <View
@@ -200,6 +218,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginTop="1dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/Text_status"
                 android:textColor="#000000"
                 android:textSize="26sp"
@@ -212,7 +231,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -278,7 +297,7 @@
                 android:id="@+id/data"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginTop="200dp"
                 android:layout_gravity="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
@@ -293,7 +312,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="15dp"
                 />
 
 
