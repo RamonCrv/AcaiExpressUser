@@ -16,10 +16,19 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="Configuração da conta"
+        android:text="@string/config_conta"
         android:textColor="#FFFFFF"
         android:textSize="42sp"
         android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
@@ -36,32 +45,22 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_gravity="start|center"
-        android:layout_marginStart="280dp"
+        android:layout_marginStart="260dp"
         android:layout_marginTop="-40dp"
         android:background="@drawable/btn1"
         android:drawableStart="@drawable/edite"
         android:stateListAnimator="@drawable/btn1"
-        android:text="Edite"
+        android:text="@string/editi"
         android:textColor="#FFFFFF">
 
     </Button>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="280dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/nomeUserConf"
                 android:layout_width="318dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
                 android:gravity="center"
                 android:hint="@string/Text_user_name"
                 android:inputType="text"
@@ -77,7 +76,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="100dp"
                 android:background="@drawable/texts"
-                android:text="Salvar/Atualizar"
+                android:text="@string/salvar_atualizar"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
@@ -88,8 +87,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/btn1"
-                android:text="Cancelar"
-                android:textSize="20sp"></Button>
+                android:text="@string/sair"
+                android:textSize="20sp">
+
+            </Button>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

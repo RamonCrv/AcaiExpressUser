@@ -118,20 +118,19 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
 
         android:background="@mipmap/starnnn_background"/>
             <TextView
                 android:id="@+id/mednota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-20dp"
+                android:gravity="center"
                 android:layout_marginTop="25dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:textSize="56sp"
-                app:layout_constraintVertical_bias="0.178" />
+                android:textSize="56sp" />
 
         </LinearLayout>
             <View
