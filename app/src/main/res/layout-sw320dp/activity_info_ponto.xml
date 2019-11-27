@@ -88,8 +88,7 @@
                 android:layout_width="177dp"
                 android:layout_height="164dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="-250dp"
-                app:layout_constraintVertical_bias="0.25" />
+                android:layout_marginTop="-250dp" />
 
 
 

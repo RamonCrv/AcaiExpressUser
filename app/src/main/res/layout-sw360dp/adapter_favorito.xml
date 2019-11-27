@@ -10,12 +10,13 @@
         android:id="@+id/localname"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:autoSizeTextType="uniform"
         android:layout_marginStart="150dp"
+        android:autoSizeTextType="uniform"
         android:gravity="center"
         android:text="@string/nome_do_local"
-        android:textColor="#FFC107"
-        android:textSize="20sp" />
+        android:textColor="@color/color4"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,31 +24,30 @@
         android:orientation="vertical">
 
 
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_weight="0"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="#FFC107"
-                    android:textSize="24sp" />
-            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
+                android:layout_width="57dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="30dp"
+                android:layout_gravity="center" />
 
 
             <ImageView
                 android:id="@+id/ImgPt"
-                android:layout_width="130dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_width="139dp"
+                android:layout_height="103dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="-92dp"
+                android:scaleType="fitXY">
 
             </ImageView>
 
@@ -76,10 +76,9 @@
                     android:id="@+id/aberto"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:autoSizeTextType="uniform"
                     android:gravity="end"
                     android:text="@string/Text_preço"
-                    android:textColor="#673AB7"
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -89,7 +88,7 @@
                     android:layout_height="15dp"
                     android:gravity="end|center"
 
-                    android:textColor="#673AB7"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -99,7 +98,7 @@
                     android:layout_height="30dp"
                     android:gravity="end|center"
                     android:text="@string/Aberto"
-                    android:textColor="#673AB7"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -132,7 +131,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="end"
                     android:autoSizeTextType="uniform"
                     android:drawableStart="@drawable/star2"
                     android:gravity="center"
@@ -147,7 +146,7 @@
                     android:layout_height="30dp"
                     android:gravity="end"
                     android:text="@string/KM"
-                    android:textColor="#673AB7"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
