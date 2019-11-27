@@ -3,13 +3,52 @@
 xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Lista">
 
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:textColor="#FFFFFF"
+        android:background="@color/color4"
+        android:textCursorDrawable="@color/color4" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="@string/Text_faroritos"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:autoSizeTextType="uniform"
+        android:background="@color/color4"
+        android:textCursorDrawable="@color/color4" />
+
+    <Button
+        android:id="@+id/ButtVoltarXML"
+        android:layout_width="30dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bnt3"
+        android:layout_marginTop="-45dp"
+        android:drawableStart="@drawable/icon_voltar"
+        android:textColor="#FFFFFF" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider" />
 
 <ListView
-    android:layout_marginTop="35dp"
     android:id="@+id/listView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent" >
+
+
+</ListView>
 
 </LinearLayout>

@@ -75,12 +75,12 @@ public class userConfig2 extends AppCompatActivity {
 
     void clicks(){
 
-btCacelar.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        finish();
-    }
-});
+        btCacelar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+         }
+        });
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override

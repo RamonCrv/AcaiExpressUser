@@ -58,8 +58,7 @@
         android:background="@drawable/bnt3"
         android:layout_marginTop="-45dp"
         android:drawableStart="@drawable/icon_voltar"
-        android:textColor="#FFFFFF"
-        app:layout_constraintVertical_bias="0.812" />
+        android:textColor="#FFFFFF" />
 
 
     <ScrollView
