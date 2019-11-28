@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -54,21 +55,30 @@ public class Cadastro extends AppCompatActivity {
                 String email = editEmail.getText().toString().trim();
                 String senha = editSenha.getText().toString().trim();
                 criarUser(email,senha);
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)) {
+                    alert("Prencha Todos os Campos!");
+                }else {
+                    btnRegistrar.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
     }
     //CRIAR USUARIO TRADICIONAL
     private void criarUser(String email, String senha){
+
         if(email.contains("@") == false){
             alert("ENTRE COM UM EMAIL VALIDO!!!");
+            btnRegistrar.setVisibility(View.VISIBLE);
         }else{
             if (senha.length() <=7 ){
                 alert("SENHA MUITO PEQUENA");
+                btnRegistrar.setVisibility(View.VISIBLE);
 
             }else{
                 if (editSenha.getText().toString().trim().equals(conSenha.getText().toString().trim()) == false){
                     alert("AS SENHAS NÃO COMBINAM");
+                    btnRegistrar.setVisibility(View.VISIBLE);
                 }else{
                     mAuth.createUserWithEmailAndPassword(email,senha).addOnCompleteListener(Cadastro.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -80,6 +90,7 @@ public class Cadastro extends AppCompatActivity {
                                 startActivity(i);
                             }else{
                                 alert("Email já Cadastrado");
+                                btnRegistrar.setVisibility(View.VISIBLE);
                             }
                         }
                     });

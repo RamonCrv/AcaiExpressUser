@@ -71,17 +71,28 @@
             android:background="@drawable/btn1"
             android:text="Cadastrar"
             android:textAllCaps="false"
-            android:textColor="#66f9B0"
+            android:backgroundTint="@color/color4"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:visibility="visible"
             app:layout_constraintVertical_bias="0.0" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-40dp"
+            app:layout_constraintVertical_bias="0.25" />
 
         <Button
             android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/color4"
+            android:layout_marginTop="70dp"
             android:layout_gravity="center"
+            android:textColor="#FFFFFF"
             android:background="@drawable/btn1"
             android:text="Voltar" />
     </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -149,6 +150,11 @@ public class Login extends AppCompatActivity {
                 String email = editEmail.getText().toString().trim();
                 String senha = editSenha.getText().toString().trim();
                 login(email, senha);
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)){
+                    alert("Prencha todos os campos");
+                }else {
+                    btnLogar.setVisibility(View.INVISIBLE);
+                 }
                 }
             }
         });
@@ -169,7 +175,9 @@ public class Login extends AppCompatActivity {
     //FAZ O LOGIN TRADICIONAL
     private void login(String email, String senha) {
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)) {
-            alert("prencha todos os campos");
+            btnLogar.setVisibility(View.VISIBLE);
+
+
         } else {
             mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
 
@@ -181,11 +189,15 @@ public class Login extends AppCompatActivity {
 
                     } else {
                         alert("Email ou senha incorreto");
+                        btnLogar.setVisibility(View.VISIBLE);
                     }
                 }
             });
         }
     }
+
+
+
     //INICIALIZA COMPONENTES
     private void inicializarComponentes() {
         signInButton =(SignInButton)findViewById(R.id.sign_in_button);

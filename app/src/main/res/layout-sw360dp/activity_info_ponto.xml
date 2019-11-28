@@ -17,26 +17,19 @@
     android:background="@color/color4"
     android:textCursorDrawable="@color/color4"
     app:layout_constraintVertical_bias="1.0" />
-    <TextView
 
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:background="@color/color4"
-        android:textCursorDrawable="@color/color4"
-        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/PontNomeXML"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="-60dp"
-        android:layout_marginStart="50dp"
+        android:layout_height="50dp"
         android:background="@color/color4"
+        android:autoSizeTextType="uniform"
         android:text=""
+        android:gravity="center"
+        android:layout_gravity="center"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -46,17 +39,19 @@
         android:layout_height="38dp"
         android:layout_gravity="end"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="-45dp"
         android:background="@mipmap/estrelaoff_background"
         android:visibility="visible"
         tools:visibility="visible" />
     <Button
         android:id="@+id/ButtVoltarXML"
-        android:layout_width="30dp"
-        android:layout_height="44dp"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:background="@drawable/bnt3"
-        android:layout_marginTop="-45dp"
+        android:gravity="center"
+        android:layout_marginTop="-40dp"
+        android:backgroundTint="@color/color4"
         android:drawableStart="@drawable/icon_voltar"
         android:textColor="#FFFFFF" />
 
@@ -73,12 +68,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/ImgPt"
                 android:layout_width="match_parent"
                 android:layout_height="288dp"
                 android:scaleType="fitXY"
-                android:layout_marginTop="195dp"
+                android:layout_marginTop="200dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ProgressBar
@@ -90,7 +89,7 @@
                 android:layout_marginTop="-250dp"
                 app:layout_constraintVertical_bias="0.25" />
 
-
+        </androidx.cardview.widget.CardView>
 
             <View
                 android:id="@+id/divider"
@@ -129,7 +128,7 @@
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:background="?android:attr/listDivider" />
 
             <TextView
@@ -143,19 +142,21 @@
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintVertical_bias="1.0" />
+
             <ImageView
                 android:id="@+id/imgSelo"
+                android:layout_marginTop="-20dp"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/selo_background"
                 android:layout_gravity="center">
-
             </ImageView>
 
             <View
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="-15dp"
                 android:background="?android:attr/listDivider" />
 
 
@@ -190,8 +191,8 @@
             <View
                 android:id="@+id/divider14"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="3dp"
                 android:background="?android:attr/listDivider" />
 
             <TextView
@@ -225,23 +226,28 @@
             <View
                 android:id="@+id/divider4"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 android:layout_marginTop="5dp"
                 android:background="?android:attr/listDivider" />
 
             <LinearLayout
-                android:layout_width="290dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="horizontal">
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
 
 
                 <Button
                     android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:background="@drawable/bnt3"
                     android:drawableTop="@drawable/img_ir_foreground"
                     android:text="@string/Ir"
@@ -250,15 +256,19 @@
                     android:textSize="18sp"
                     app:layout_constraintVertical_bias="1.0" />
 
+            </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:gravity="end"
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
 
                 <Button
                     android:id="@+id/button20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:background="@drawable/bnt3"
                     android:drawableTop="@mipmap/star2_foreground"
                     android:text="@string/text_avaliar_local"
@@ -266,14 +276,14 @@
                     android:textStyle="bold"
                     android:textColor="#000000"
                     app:layout_constraintVertical_bias="1.0" />
-
+                </androidx.cardview.widget.CardView>
 
 
             </LinearLayout>
             <View
                 android:id="@+id/divider0"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 android:background="?android:attr/listDivider" />
             <TextView
                 android:id="@+id/data"

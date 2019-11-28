@@ -66,8 +66,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn1"
+            android:backgroundTint="@color/color4"
             android:text="@string/Entrar"
-            android:textColor="#66f9B0"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="40dp"
             android:textSize="16sp"
             android:layout_gravity="center"
@@ -77,12 +78,20 @@
             app:layout_constraintStart_toStartOf="@+id/editSenha"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.48000002" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-40dp"
+            app:layout_constraintVertical_bias="0.25" />
 
         <Button
             android:id="@+id/btnPul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:layout_gravity="center"
             android:background="@drawable/btsemborda"
             android:text="@string/Entrar_sem_logar"
