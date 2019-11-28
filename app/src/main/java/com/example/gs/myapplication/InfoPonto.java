@@ -60,6 +60,7 @@ public class InfoPonto extends AppCompatActivity {
     private float  LatDoPonto;
     private String latDoPonto;
     private String longDoPonto;
+    private String SeloHigi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +72,9 @@ public class InfoPonto extends AppCompatActivity {
         BuscarDoc();
         attData();
         startt();
-        pegarNotaHigi();
+        //pegarNotaHigi();
         progressBar.setVisibility(View.VISIBLE);
         pegarLocalDoPonto();
-
 
         DatabaseReference databaseDoc5;
         databaseDoc5 = FirebaseDatabase.getInstance().getReference();
@@ -339,24 +339,6 @@ public class InfoPonto extends AppCompatActivity {
         this.progressBar = findViewById(R.id.progressBar);
     }
 
-    void pegarNotaHigi(){
-        DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        String str = MapsActivity.InfoSalvas.getString("key");
-        mDatabase.child("Ponto/" + str + "/nNota").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    txtAv.setText(dataSnapshot.getValue().toString());
-                }
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 }

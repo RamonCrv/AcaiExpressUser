@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         if (auth.getCurrentUser() != null){
             BuscarImg();
             pegarNome();
+        }else{
+            porImagemDeslogado();
         }
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -200,6 +202,10 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     @Override
     public void onBackPressed() {
 
+    }
+
+    void porImagemDeslogado(){
+        imgUser.setImageResource(R.mipmap.imgdeslogado);
     }
 
 

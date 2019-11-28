@@ -143,19 +143,13 @@
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/txtAV"
+            <ImageView
+                android:id="@+id/imgSelo"
                 android:layout_width="wrap_content"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
-                android:drawableStart="@drawable/starblue"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textColorLink="#00FF0000"
-                android:textSize="36sp"
-                app:layout_constraintVertical_bias="0.216" />
+                android:layout_height="50dp"
+                android:layout_gravity="center">
+
+            </ImageView>
 
             <View
                 android:id="@+id/divider3"
