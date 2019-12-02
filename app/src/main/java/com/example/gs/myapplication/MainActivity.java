@@ -1,9 +1,15 @@
 package com.example.gs.myapplication;
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
@@ -41,6 +47,7 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
+
     private FragmentManager fragmentManager;
     private AppBarConfiguration mAppBarConfiguration;
     private Uri mUri;
@@ -48,10 +55,19 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     FirebaseAuth auth;
     private TextView nomeUser;
     private CircleImageView imgUser;
+    public int eae;
+    public static Bundle bundle1 = new Bundle();
+    public static Bundle bundle2 = new Bundle();
+    Double latitude;
+    Double longitude;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getLocationn();
+
         inicialziarComponentes();
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null){
@@ -206,6 +222,34 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
 
     void porImagemDeslogado(){
         imgUser.setImageResource(R.mipmap.imgdeslogado);
+    }
+
+    void getLocationn(){
+        LocationManager locationManager;
+        Location locationNow;
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
+            MainActivity.bundle1.putString("latitude", "123123");
+        }else{
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationNow = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            //MainActivity.bundle1.putString("latitude", "123123");
+
+
+
+               latitude = locationNow.getLatitude();
+               longitude = locationNow.getLongitude();
+                MainActivity.bundle1.putDouble("latitude", latitude);
+                MainActivity.bundle2.putDouble("longitude", longitude);
+
+
+
+
+
+
+
+        }
+
     }
 
 

@@ -1,8 +1,10 @@
 package com.example.gs.myapplication;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -69,6 +72,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     public static Bundle InfoSalvas = new Bundle();
     public static Bundle userLat = new Bundle();
     public static Bundle userLong= new Bundle();
+
+
+
+
     ArrayList Ponto = new ArrayList();
     private Location location;
     private LocationManager locationManager;
@@ -107,7 +114,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         }
 
 
-
+        //googleMap.moveCamera(CameraUpdateFactory.newCameraPosition();
         if (mapView != null &&
                 mapView.findViewById(Integer.parseInt("1")) != null) {
             // Get the button view
@@ -120,11 +127,13 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
             layoutParams.setMargins(0, 0, 30, 30);
 
+
         }else{
 
         }
         mMap = googleMap;
         criarPontos(googleMap);
+
 
         //ATUALIZA OS PONTOS EM TEMPO REAL.
         DatabaseReference databaseDoc5;
@@ -141,9 +150,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
             }
         });
+        //Toast.makeText(getActivity(), "Latitude: "+locationB.getDouble("latitude")+" e Longitude: "+  locationB.getDouble("longitude"), Toast.LENGTH_SHORT).show();
 
-        LatLng latLng = new LatLng(0.025921, -51.068596);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.4f));
+
+
         mMap.setTrafficEnabled(false);
         mMap.setMinZoomPreference(13.0f);
         mMap.setMaxZoomPreference(17.5f);
@@ -152,7 +162,18 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         mMap.setMyLocationEnabled(true);
-        mMap.setPadding(0, 0, 30, 30);
+        //mMap.setPadding(0, 0, 30, 30);
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        }
+
+
+            LatLng latLng = new LatLng(MainActivity.bundle1.getDouble("latitude"), MainActivity.bundle2.getDouble("longitude"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.4f));
+
+
+
 
     }
 
@@ -161,12 +182,12 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
     @Override
     public boolean onMyLocationButtonClick() {
-
+        Toast.makeText(getActivity(), "Latitude: "+MainActivity.bundle1.getString("latitude")+" e Longitude: "+  MainActivity.bundle2.getDouble("longitude"), Toast.LENGTH_SHORT).show();
         return false;
     }
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-
+        Toast.makeText(getActivity(), "Latitude: "+MainActivity.bundle1.getDouble("latitude")+" e Longitude: "+  MainActivity.bundle2.getDouble("longitude"), Toast.LENGTH_SHORT).show();
     }
 
     public void criarPontos(GoogleMap googleMap){
@@ -225,18 +246,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
     }
 
-    private static String getRandomString(final int sizeOfRandomString)
-    {
-        final Random random=new Random();
-        final StringBuilder sb=new StringBuilder(sizeOfRandomString);
-        for(int i=0;i<sizeOfRandomString;++i)
-            sb.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
-        return sb.toString();
-    }
 
-    void porImgDoUser(){
 
-    }
 
 
 

@@ -61,6 +61,7 @@ public class InfoPonto extends AppCompatActivity {
     private String latDoPonto;
     private String longDoPonto;
     private String SeloHigi;
+    private ImageView imgSelo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,12 +177,13 @@ public class InfoPonto extends AppCompatActivity {
         btnestar = (findViewById(R.id.btnestar));
         irAteLocal = (findViewById(R.id.button2));
         Datat= (findViewById(R.id.data));
-        txtAv = (findViewById(R.id.txtAV));
+        imgSelo= (findViewById(R.id.imgSelo));
 
     }
 
     public void BuscarImg(){
         String str = MapsActivity.InfoSalvas.getString("key");
+
         final StorageReference ref = FirebaseStorage.getInstance().getReference().child("/Imagens/Ponto/").child(str);
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -214,6 +216,12 @@ public class InfoPonto extends AppCompatActivity {
                      mednota.setText(dataSnapshot.child(str).child("mediaAv").getValue().toString());
                     PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString());
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
+                    if (dataSnapshot.child(str).child("verificado").getValue().toString().equals("V")){
+
+                            //imgSelo = null;
+                    }else{
+                        imgSelo.setVisibility(View.INVISIBLE);
+                    }
 
                 }else {
                     Toast.makeText(InfoPonto.this, "erro ao carregar dados",
