@@ -234,11 +234,9 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             public boolean onMarkerClick(Marker marker) {
                 String key = marker.getTitle();
                 MapsActivity.InfoSalvas.putString("key", key);
-
-
                 Intent i = new Intent(getActivity(),InfoPonto.class);
                startActivity(i);
-               getActivity().finish();
+             //  getActivity().finish();
                 return true;
 
             }
