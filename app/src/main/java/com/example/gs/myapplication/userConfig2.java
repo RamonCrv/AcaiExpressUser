@@ -175,13 +175,16 @@ public class userConfig2 extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0){
-            mUri = data.getData();
-            Bitmap bitmap = null;
-            try {
-                bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mUri);
-                imgUser.setImageDrawable(new BitmapDrawable(bitmap));
-            } catch (IOException e) {
+            if(data != null){
+                mUri = data.getData();
+                Bitmap bitmap = null;
+                try {
+                    bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mUri);
+                    imgUser.setImageDrawable(new BitmapDrawable(bitmap));
+                } catch (IOException e) {
+                }
             }
+
         }
     }
 

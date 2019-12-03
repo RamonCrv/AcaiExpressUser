@@ -146,9 +146,9 @@
             <ImageView
                 android:id="@+id/imgSelo"
                 android:layout_marginTop="-20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/selo_background"
+                android:layout_width="150dp"
+                android:scaleType="fitXY"
+                android:layout_height="130dp"
                 android:layout_gravity="center">
             </ImageView>
 
