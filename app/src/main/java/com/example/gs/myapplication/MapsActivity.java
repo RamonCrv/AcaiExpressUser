@@ -182,12 +182,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(getActivity(), "Latitude: "+MainActivity.bundle1.getString("latitude")+" e Longitude: "+  MainActivity.bundle2.getDouble("longitude"), Toast.LENGTH_SHORT).show();
         return false;
     }
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-        Toast.makeText(getActivity(), "Latitude: "+MainActivity.bundle1.getDouble("latitude")+" e Longitude: "+  MainActivity.bundle2.getDouble("longitude"), Toast.LENGTH_SHORT).show();
     }
 
     public void criarPontos(GoogleMap googleMap){

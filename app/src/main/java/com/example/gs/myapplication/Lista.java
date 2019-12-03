@@ -139,9 +139,10 @@ public class Lista extends AppCompatActivity {
                 String idS = String.valueOf(id);
                 int idInt = Integer.parseInt(idS);
                 MapsActivity.InfoSalvas.putString("key",  arrayList.get(idInt).getIdPt());
+                finish();
                 Intent i = new Intent(Lista.this, InfoPonto.class);
                 startActivity(i);
-                finish();
+
             }
         });
 

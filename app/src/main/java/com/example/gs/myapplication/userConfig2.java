@@ -90,7 +90,7 @@ public class userConfig2 extends AppCompatActivity {
                 }
                 if (nomeUser.getText().toString() != null){
                     Toast.makeText(userConfig2.this, "Atualizando...",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_LONG).show();
                     salvarNome();
                     tempo();
                 }

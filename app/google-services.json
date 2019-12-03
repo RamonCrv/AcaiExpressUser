@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "624854898555-hrgc5nncon8bnqeg998toodbkpa72oql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.exampl.gs.acaiexpress",
+            "certificate_hash": "8baee4ec2e00c2e3a33a7ece4ceb6b237153c779"
+          }
+        },
+        {
           "client_id": "624854898555-a3n24g9kmob7nra7cch5a7sk4hjm3vjd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
