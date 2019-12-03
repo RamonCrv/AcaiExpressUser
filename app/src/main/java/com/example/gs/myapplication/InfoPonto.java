@@ -217,7 +217,7 @@ public class InfoPonto extends AppCompatActivity {
                     PrecoDoPonto.setText("R$:"+dataSnapshot.child(str).child("preso").getValue().toString());
                     StatusDoPonto.setText(dataSnapshot.child(str).child("aberto").getValue().toString());
                     if (dataSnapshot.child(str).child("verificado").getValue().toString().equals("V")){
-                        imgSelo.setBackgroundResource(R.mipmap.selo_background);
+                        imgSelo.setBackgroundResource(R.mipmap.selo1_background);
 
                     }else{
                         imgSelo.setBackgroundResource(R.mipmap.sem_selo_foreground);
