@@ -50,6 +50,8 @@ public class userConfig2 extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button btCacelar;
     private boolean trocouImagem;
+    private boolean trocouImagemMsm;
+    private boolean primeiravez;
 
 
     @Override
@@ -85,17 +87,19 @@ public class userConfig2 extends AppCompatActivity {
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (trocouImagem){
-                    saveUserInFirebase();
-                }
-                if (nomeUser.getText().toString() != null){
-                    Toast.makeText(userConfig2.this, "Atualizando...",
-                            Toast.LENGTH_LONG).show();
+
+                if (nomeUser.getText() == null || nomeUser.getText().toString().equals("")){
+                    Toast.makeText(userConfig2.this, "Há campos em branco", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(userConfig2.this, "Atualizando...", Toast.LENGTH_LONG).show();
                     salvarNome();
+                    if (trocouImagem && trocouImagemMsm){
+                        saveUserInFirebase();
+                    }
                     tempo();
                 }
-                trocouImagem = false;
-                tempo();
+
+
                 
             }
         });
@@ -177,12 +181,15 @@ public class userConfig2 extends AppCompatActivity {
         if (requestCode == 0){
             if(data != null){
                 mUri = data.getData();
+                trocouImagemMsm = true;
                 Bitmap bitmap = null;
                 try {
                     bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mUri);
                     imgUser.setImageDrawable(new BitmapDrawable(bitmap));
                 } catch (IOException e) {
                 }
+            }else{
+                trocouImagemMsm = false;
             }
 
         }
@@ -204,7 +211,10 @@ public class userConfig2 extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
+                    primeiravez = false;
                     nomeUser.setText(dataSnapshot.getValue().toString());
+                }else{
+                    primeiravez = true;
                 }
             }
             @Override

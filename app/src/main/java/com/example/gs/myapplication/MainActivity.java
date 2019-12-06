@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     public static Bundle bundle2 = new Bundle();
     Double latitude;
     Double longitude;
+    boolean priVezLogado;
 
 
     @Override
@@ -207,6 +208,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     nomeUser.setText(dataSnapshot.getValue().toString());
+                }else{
+                    priVezLogado = true;
                 }
             }
             @Override

@@ -54,11 +54,13 @@ public class Cadastro extends AppCompatActivity {
             public void onClick(View v) {
                 String email = editEmail.getText().toString().trim();
                 String senha = editSenha.getText().toString().trim();
-                criarUser(email,senha);
+
+
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)) {
                     alert("Prencha Todos os Campos!");
                 }else {
                     btnRegistrar.setVisibility(View.INVISIBLE);
+                    criarUser(email,senha);
                 }
             }
         });
@@ -66,6 +68,7 @@ public class Cadastro extends AppCompatActivity {
     }
     //CRIAR USUARIO TRADICIONAL
     private void criarUser(String email, String senha){
+
 
         if(email.contains("@") == false){
             alert("ENTRE COM UM EMAIL VALIDO!!!");
