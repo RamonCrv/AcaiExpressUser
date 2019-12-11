@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getLocationn();
+
 
         inicialziarComponentes();
         auth = FirebaseAuth.getInstance();
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.nav_host_fragment, new MapsActivity(),"Maps fragiment" );
         transaction.commitAllowingStateLoss();
+        getLocationn();
 
     }
 
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     nomeUser.setText(dataSnapshot.getValue().toString());
+                    getLocationn();
                 }else{
                     priVezLogado = true;
                 }
@@ -237,17 +239,12 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             locationNow = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             //MainActivity.bundle1.putString("latitude", "123123");
-
-
-
-               latitude = locationNow.getLatitude();
-               longitude = locationNow.getLongitude();
+           if(locationNow != null){
+                latitude = locationNow.getLatitude();
+                longitude = locationNow.getLongitude();
                 MainActivity.bundle1.putDouble("latitude", latitude);
                 MainActivity.bundle2.putDouble("longitude", longitude);
-
-
-
-
+           }
 
 
 

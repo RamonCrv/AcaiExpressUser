@@ -173,8 +173,6 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.4f));
 
 
-
-
     }
 
 
